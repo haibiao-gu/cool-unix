@@ -1,10 +1,10 @@
-import type { PassThroughProps } from "../../types";
 import type { ClIconProps } from "../cl-icon/props";
+import type { ClTextProps } from "../cl-text/props";
 
 export type ClCheckboxPassThrough = {
 	className?: string;
 	icon?: ClIconProps;
-	label?: PassThroughProps;
+	label?: ClTextProps;
 };
 
 export type ClCheckboxProps = {

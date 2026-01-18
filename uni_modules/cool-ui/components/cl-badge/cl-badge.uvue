@@ -16,8 +16,9 @@
 		:style="badgeStyle"
 	>
 		<cl-text
+			:size="10"
 			:pt="{
-				className: parseClass(['cl-badge__text text-white text-xs', pt.text?.className])
+				className: parseClass(['cl-badge__text text-white', pt.text?.className])
 			}"
 			v-if="!dot"
 		>
@@ -32,8 +33,7 @@
 import { computed } from "vue";
 import type { PropType } from "vue";
 import type { PassThroughProps, Type } from "../../types";
-import { parseClass, parsePt } from "@/cool";
-import { useSize } from "../../hooks";
+import { parseClass, parsePt } from "@/.cool";
 
 defineOptions({
 	name: "cl-badge"
@@ -62,8 +62,6 @@ const props = defineProps({
 	}
 });
 
-const { getRpx } = useSize();
-
 type PassThrough = {
 	className?: string;
 	text?: PassThroughProps;
@@ -75,21 +73,21 @@ const badgeStyle = computed(() => {
 	const style = {};
 
 	if (props.dot) {
-		style["height"] = getRpx(10);
-		style["width"] = getRpx(10);
-		style["minWidth"] = getRpx(10);
+		style["height"] = "5px";
+		style["width"] = "5px";
+		style["minWidth"] = "5px";
 		style["padding"] = 0;
 	} else {
-		style["height"] = getRpx(30);
-		style["minWidth"] = getRpx(30);
-		style["padding"] = `0 ${getRpx(6)}`;
+		style["height"] = "14px";
+		style["minWidth"] = "14px";
+		style["padding"] = "0 3px";
 	}
 
 	if (props.position) {
 		style["transform"] = "translate(50%, -50%)";
 
 		if (props.dot) {
-			style["transform"] = `translate(-${getRpx(5)}, ${getRpx(5)})`;
+			style["transform"] = `translate(-3px, 3px)`;
 		}
 	}
 

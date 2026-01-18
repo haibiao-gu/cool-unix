@@ -22,18 +22,13 @@
 					class="cl-keyboard-car__value"
 					:class="[pt.value?.className]"
 				>
-					<cl-text
-						v-if="value != ''"
-						:pt="{
-							className: 'text-2xl'
-						}"
-						>{{ valueText }}</cl-text
-					>
+					<cl-text v-if="value != ''" :size="24">{{ valueText }}</cl-text>
 
 					<cl-text
 						v-else
+						:size="16"
 						:pt="{
-							className: 'text-md text-surface-400'
+							className: 'text-surface-400'
 						}"
 						>{{ placeholder }}</cl-text
 					>
@@ -56,12 +51,12 @@
 							{
 								'is-dark': isDark,
 								'is-empty': item == '',
-								'is-fill': rowIndex == 0 && mode == 'plate'
+								'is-fill': rowIndex == 0 || mode == 'plate'
 							},
 							pt.item?.className
 						]"
 						:style="{
-							marginRight: index == row.length - 1 ? '0' : '10rpx'
+							marginRight: index == row.length - 1 ? '0' : '4px'
 						}"
 						hover-class="opacity-50"
 						:hover-stay-time="250"
@@ -71,17 +66,17 @@
 							<cl-icon
 								v-if="item == 'delete'"
 								name="delete-back-2-line"
-								:size="36"
+								:size="18"
 							></cl-icon>
 
 							<cl-icon
 								v-else-if="item == 'confirm'"
 								name="check-line"
-								:size="36"
+								:size="18"
 								color="white"
 							></cl-icon>
 
-							<cl-text v-else>{{ item }}</cl-text>
+							<cl-text :size="16" v-else>{{ item }}</cl-text>
 						</slot>
 					</view>
 				</view>
@@ -95,9 +90,7 @@ import { useUi } from "../../hooks";
 import type { PassThroughProps } from "../../types";
 import type { ClPopupProps } from "../cl-popup/props";
 import { ref, computed, watch } from "vue";
-import { $t, t } from "@/locale";
-import { isDark, parseClass, parsePt } from "@/cool";
-import { vibrate } from "@/uni_modules/cool-vibrate";
+import { isDark, parseClass, parsePt, $t, t } from "@/.cool";
 
 defineOptions({
 	name: "cl-keyboard-car"
@@ -217,7 +210,7 @@ function close() {
 // 处理键盘按键点击事件
 function onCommand(key: string) {
 	// 震动
-	vibrate(1);
+	uni.$emit("cool.vibrate");
 
 	// 确认按钮逻辑
 	if (key == "confirm") {
@@ -294,12 +287,12 @@ defineExpose({
 
 <style lang="scss" scoped>
 .cl-keyboard-car {
-	padding: 0 20rpx 20rpx 20rpx;
+	@apply p-3 pt-0;
 
 	&__value {
 		@apply flex flex-row items-center justify-center;
-		height: 80rpx;
-		margin-bottom: 20rpx;
+		@apply mb-3;
+		height: 40px;
 	}
 
 	&__list {
@@ -320,21 +313,20 @@ defineExpose({
 
 	&__item {
 		@apply flex items-center justify-center rounded-lg bg-white;
-		height: 80rpx;
-		width: 62rpx;
-		margin-top: 10rpx;
+		@apply mt-1;
+		height: 40px;
+		width: 32px;
 
 		&.is-dark {
 			@apply bg-surface-800;
 		}
 
 		&.is-fill {
-			flex: 1;
+			@apply flex-1;
 		}
 
 		&.is-keycode-delete {
-			@apply bg-surface-200;
-			flex: 1;
+			@apply bg-surface-200 flex-1;
 
 			&.is-dark {
 				@apply bg-surface-600;
@@ -342,8 +334,7 @@ defineExpose({
 		}
 
 		&.is-keycode-confirm {
-			@apply bg-primary-500;
-			flex: 1;
+			@apply bg-primary-500 flex-1;
 		}
 
 		&.is-empty {

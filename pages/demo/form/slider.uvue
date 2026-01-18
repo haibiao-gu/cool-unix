@@ -20,8 +20,8 @@
 					v-model="num3"
 					:disabled="isDisabled"
 					:show-value="isShowValue"
-					:block-size="isSize ? 50 : 40"
-					:track-height="isSize ? 12 : 8"
+					:block-size="isSize ? 24 : 20"
+					:track-height="isSize ? 6 : 4"
 					:step="isStep ? 10 : 1"
 					:max="isMax ? 50 : 100"
 					:pt="{
@@ -72,7 +72,7 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import DemoItem from "../components/item.uvue";
-import { t } from "@/locale";
+import { t } from "@/.cool";
 
 const num = ref(60);
 const num2 = ref<number[]>([10, 20]);

@@ -30,7 +30,7 @@
 </template>
 
 <script lang="ts" setup>
-import { request } from "@/cool";
+import { request } from "@/.cool";
 import DemoItem from "../components/item.uvue";
 import { useListView, useUi, type ClListViewItem } from "@/uni_modules/cool-ui";
 import { ref } from "vue";

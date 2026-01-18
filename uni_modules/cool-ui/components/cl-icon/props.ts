@@ -6,8 +6,8 @@ export type ClIconProps = {
 	className?: string;
 	pt?: ClIconPassThrough;
 	name?: string;
-	size?: string | number;
-	height?: string | number;
-	width?: string | number;
+	size?: number;
+	height?: number;
+	width?: number;
 	color?: string;
 };

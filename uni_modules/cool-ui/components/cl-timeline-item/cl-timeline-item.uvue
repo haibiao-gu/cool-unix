@@ -4,7 +4,7 @@
 			<cl-icon
 				v-if="icon != ''"
 				:name="icon"
-				:size="34"
+				:size="20"
 				:pt="{
 					className: `${pt.icon?.className}`
 				}"
@@ -12,7 +12,7 @@
 
 			<view v-else class="cl-timeline-item__dot"></view>
 
-			<view class="cl-timeline-item__line" v-if="!hideLine"></view>
+			<view class="cl-timeline-item__line dark:!bg-surface-600" v-if="!hideLine"></view>
 		</view>
 
 		<view
@@ -26,9 +26,10 @@
 		>
 			<cl-text
 				v-if="title != ''"
+				:size="16"
 				:pt="{
 					className: parseClass([
-						`mb-1 !font-bold ${pt.title?.className}`,
+						`mb-2 !font-bold ${pt.title?.className}`,
 						[isDark, 'text-white', 'text-surface-900']
 					])
 				}"
@@ -38,7 +39,7 @@
 			<cl-text
 				v-if="content != ''"
 				:pt="{
-					className: `mb-2 text-sm ${pt.content?.className}`
+					className: `mb-3 ${pt.content?.className}`
 				}"
 				>{{ content }}</cl-text
 			>
@@ -47,8 +48,9 @@
 
 			<cl-text
 				v-if="date != ''"
+				:size="12"
 				:pt="{
-					className: `text-xs ${pt.date?.className}`
+					className: `${pt.date?.className}`
 				}"
 				color="info"
 				>{{ date }}</cl-text
@@ -59,7 +61,7 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import { isDark, parseClass, parsePt } from "@/cool";
+import { isDark, parseClass, parsePt } from "@/.cool";
 import type { PassThroughProps } from "../../types";
 
 defineOptions({
@@ -113,39 +115,39 @@ const pt = computed(() => parsePt<PassThrough>(props.pt));
 .cl-timeline-item {
 	@apply flex flex-row w-full;
 	overflow: visible;
-	margin-bottom: 10rpx;
+	margin-bottom: 5px;
 
 	&__left {
 		@apply flex flex-col items-center overflow-visible;
-		width: 50rpx;
-		margin-right: 10rpx;
+		width: 25px;
+		margin-right: 5px;
 	}
 
 	&__dot {
 		@apply rounded-full bg-surface-300;
-		height: 16rpx;
-		width: 16rpx;
+		height: 8px;
+		width: 8px;
 	}
 
 	&__line {
 		@apply bg-surface-300;
-		width: 1rpx;
+		width: 1px;
 		flex: 1;
-		margin-top: 10rpx;
+		margin-top: 5px;
 	}
 
 	&__right {
 		@apply relative;
-		top: -12rpx;
+		top: -6px;
 		flex: 1;
-		margin-bottom: 40rpx;
+		margin-bottom: 20px;
 
 		&.is-title {
-			top: -12rpx;
+			top: -6px;
 		}
 
 		&.is-icon {
-			top: -4rpx;
+			top: -2px;
 		}
 	}
 }

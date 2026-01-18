@@ -10,39 +10,40 @@
 				:key="item.id"
 			>
 				<view class="flex flex-col">
-					<cl-text color="info" :pt="{ className: '!text-sm' }"
-						>{{ item.province }} {{ item.city }} {{ item.district }}</cl-text
-					>
-
 					<cl-text
+						:size="16"
 						:pt="{
-							className: 'my-1'
+							className: 'mb-2'
 						}"
-						>{{ item.address }}</cl-text
+						>{{ item.province }} {{ item.city }} {{ item.district }}
+						{{ item.address }}</cl-text
 					>
 
 					<view class="flex flex-row">
-						<cl-text :pt="{ className: '!text-sm' }">{{ item.contact }}</cl-text>
-						<cl-text color="info" :pt="{ className: 'ml-3 !text-sm' }">{{
-							item.phone
-						}}</cl-text>
+						<cl-text :size="12">{{ item.contact }}</cl-text>
+						<cl-text
+							type="phone"
+							mask
+							:size="12"
+							color="info"
+							:value="item.phone"
+							:pt="{ className: 'ml-3' }"
+						></cl-text>
 					</view>
 				</view>
 
-				<view
-					class="flex flex-row border border-solid border-gray-100 border-b-0 border-l-0 border-r-0 pt-4 mt-4 dark:!border-surface-700"
-				>
+				<view class="flex flex-row pt-4 mt-4 dark:!border-surface-700">
 					<cl-radio
 						v-model="defaultId"
 						active-icon="checkbox-circle-fill"
 						inactive-icon="checkbox-blank-circle-line"
 						:pt="{
-							className: 'max-w-[300rpx]',
-							label: {
-								className: '!text-sm'
-							},
+							className: 'max-w-[150px]',
 							icon: {
-								size: 32
+								size: 16
+							},
+							label: {
+								size: 12
 							}
 						}"
 						:value="item.id"
@@ -54,16 +55,16 @@
 						class="flex flex-row items-center justify-center ml-auto"
 						@tap="onDelete(item.id!)"
 					>
-						<cl-icon name="delete-bin-line" :size="28"></cl-icon>
-						<cl-text :pt="{ className: 'ml-2 !text-sm' }">{{ t("删除") }}</cl-text>
+						<cl-icon name="delete-bin-line"></cl-icon>
+						<cl-text :size="12" :pt="{ className: 'ml-2' }">{{ t("删除") }}</cl-text>
 					</view>
 
 					<view
 						class="flex flex-row items-center justify-center ml-6"
 						@tap="toEdit(item.id!)"
 					>
-						<cl-icon name="edit-line" :size="28"></cl-icon>
-						<cl-text :pt="{ className: 'ml-2 !text-sm' }">{{ t("修改") }}</cl-text>
+						<cl-icon name="edit-line"></cl-icon>
+						<cl-text :size="12" :pt="{ className: 'ml-2' }">{{ t("修改") }}</cl-text>
 					</view>
 				</view>
 			</view>
@@ -79,8 +80,7 @@
 
 <script lang="ts" setup>
 import { useUi } from "@/uni_modules/cool-ui";
-import { parse, request, router, usePager, type Response } from "@/cool";
-import { t } from "@/locale";
+import { parse, request, router, usePager, type Response, t } from "@/.cool";
 import { computed, ref } from "vue";
 import type { UserAddress } from "../types";
 

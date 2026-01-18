@@ -5,16 +5,18 @@
 		<view class="px-10">
 			<!-- Logo -->
 			<view class="flex flex-col items-center justify-center py-20">
-				<view class="p-3 bg-primary-500 rounded-2xl">
+				<view class="p-3 bg-white rounded-2xl">
 					<cl-image
 						src="/static/logo.png"
 						mode="widthFix"
-						:width="80"
-						:height="80"
+						:width="60"
+						:height="60"
 					></cl-image>
 				</view>
 
-				<cl-text :pt="{ className: 'text-xl font-bold mt-3' }">{{ config.name }}</cl-text>
+				<cl-text :size="18" :pt="{ className: 'font-bold mt-4' }">{{
+					config.name
+				}}</cl-text>
 			</view>
 
 			<!-- 手机号登录 -->
@@ -27,23 +29,31 @@
 			<view class="mt-6 flex flex-row flex-wrap items-center justify-center">
 				<cl-checkbox
 					v-model="agree"
-					:pt="{ icon: { size: 28 } }"
 					active-icon="checkbox-circle-fill"
 					inactive-icon="checkbox-blank-circle-line"
+					:pt="{
+						icon: {
+							size: 18
+						}
+					}"
 				>
 				</cl-checkbox>
-				<cl-text color="info" :pt="{ className: 'text-xs' }">{{
-					t("已阅读并同意")
-				}}</cl-text>
+				<cl-text color="info" :size="12">{{ t("已阅读并同意") }}</cl-text>
 				<cl-text
-					:pt="{ className: 'text-xs' }"
+					:size="12"
+					:pt="{
+						className: 'font-bold'
+					}"
 					@tap.stop="toDoc(t('用户协议'), 'userAgreement')"
 				>
 					《{{ t("用户协议") }}》
 				</cl-text>
-				<cl-text color="info" :pt="{ className: 'text-xs' }">、</cl-text>
+				<cl-text color="info" :size="12">、</cl-text>
 				<cl-text
-					:pt="{ className: 'text-xs' }"
+					:size="12"
+					:pt="{
+						className: 'font-bold'
+					}"
 					@tap.stop="toDoc(t('隐私政策'), 'privacyPolicy')"
 				>
 					《{{ t("隐私政策") }}》
@@ -59,11 +69,11 @@
 					}"
 					@tap="refs.callMethod('loginWx', 'login')"
 				>
-					<cl-icon name="wechat-fill" :size="38" color="#00b223"></cl-icon>
+					<cl-icon name="wechat-fill" :size="18" color="#00b223"></cl-icon>
 				</view>
 
 				<view class="login-item" :class="{ 'is-dark': isDark }">
-					<cl-icon name="apple-fill" :size="38"></cl-icon>
+					<cl-icon name="apple-fill" :size="18"></cl-icon>
 				</view>
 			</view>
 		</view>
@@ -72,8 +82,7 @@
 
 <script setup lang="ts">
 import { config } from "@/config";
-import { isDark, parse, router, useRefs, useStore, type Token } from "@/cool";
-import { t } from "@/locale";
+import { isDark, parse, router, useRefs, useStore, type Token, t } from "@/.cool";
 import { provide, reactive, ref } from "vue";
 import type { LoginForm } from "./types";
 import { useUi } from "@/uni_modules/cool-ui";

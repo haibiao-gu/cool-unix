@@ -4,11 +4,10 @@
 			<view
 				class="flex flex-row items-center p-2 rounded-lg bg-white w-full dark:!bg-surface-800 mb-3"
 			>
-				<cl-icon name="information-2-line" color="warn"></cl-icon>
-
 				<cl-text
+					:size="10"
 					:pt="{
-						className: 'text-sm ml-1'
+						className: 'ml-1'
 					}"
 					color="warn"
 					>双指缩放：放大/缩小、单指拖动：移动视图</cl-text
@@ -26,11 +25,11 @@
 				<image
 					src="/static/demo/select-seat/screen.png"
 					mode="widthFix"
-					class="w-[400rpx]"
+					class="w-[200px]"
 				/>
 				<cl-text
 					:pt="{
-						className: 'text-center w-full text-sm'
+						className: 'text-center w-full'
 					}"
 					>2号激光厅 银幕</cl-text
 				>
@@ -57,30 +56,26 @@
 		<cl-footer>
 			<cl-text>寻秦记</cl-text>
 			<cl-text
+				:size="12"
 				color="info"
 				:pt="{
-					className: 'text-sm mb-3 mt-1'
+					className: 'mb-3 mt-1'
 				}"
 				>今日 01月10日 14:20 - 16:16 国语 2D</cl-text
 			>
 
 			<scroll-view
 				direction="horizontal"
-				class="flex flex-row h-[80rpx]"
+				class="flex flex-row"
 				:show-scrollbar="false"
 				v-if="selectedSeats.length > 0"
 			>
 				<view
-					class="flex p-3 bg-surface-100 dark:!bg-surface-800 rounded-lg mr-2 mb-2 h-full items-center justify-center"
+					class="flex bg-surface-100 dark:!bg-surface-800 rounded-lg mr-2 mb-2 px-4 h-[40px] items-center justify-center"
 					v-for="(item, index) in selectedSeats"
 					:key="index"
 				>
-					<cl-text
-						:pt="{
-							className: 'text-sm'
-						}"
-						>{{ item }}</cl-text
-					>
+					<cl-text>{{ item }}</cl-text>
 				</view>
 			</scroll-view>
 
@@ -96,9 +91,9 @@
 <script lang="ts" setup>
 import { ref, computed } from "vue";
 import type { ClSelectSeatItem, ClSelectSeatValue } from "@/uni_modules/cool-ui/types";
-import { getColor, isDark } from "@/cool";
+import { getColor, isDark } from "@/.cool";
 import { useUi } from "@/uni_modules/cool-ui";
-import { t } from "@/locale";
+import { t } from "@/.cool";
 
 const selectSeatRef = ref<ClSelectSeatComponentPublicInstance | null>(null);
 
@@ -157,7 +152,7 @@ const seats = computed<ClSelectSeatItem[]>(() => {
 
 			// 示例：图片
 			if (col == 5 && row == 5) {
-				seat.image = 'https://unix.cool-js.com/images/demo/avatar.jpg';
+				seat.image = "https://unix.cool-js.com/images/demo/avatar.jpg";
 			}
 
 			seats.push(seat);

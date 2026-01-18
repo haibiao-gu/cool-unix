@@ -1,5 +1,4 @@
-import { forInObject, get, has } from "@/cool";
-import { icons } from "@/icons";
+import { forInObject, get, has, icons } from "@/.cool";
 import type { ClIconContent } from "../../types";
 
 export const getIcon = (name: string): ClIconContent => {

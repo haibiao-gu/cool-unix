@@ -34,7 +34,7 @@
 
 <script setup lang="ts">
 import { computed, ref, onMounted, onUnmounted, type PropType, watch } from "vue";
-import { AnimationEngine, createAnimation, getPx, parsePt } from "@/cool";
+import { AnimationEngine, createAnimation, getUnit, parsePt } from "@/.cool";
 import type { PassThroughProps } from "../../types";
 
 type MarqueeItem = {
@@ -73,18 +73,18 @@ const props = defineProps({
 	},
 	// 图片高度
 	itemHeight: {
-		type: [Number, String],
-		default: 200
+		type: Number,
+		default: 100
 	},
 	// 图片宽度 (仅横向滚动时生效，纵向为100%)
 	itemWidth: {
-		type: [Number, String],
-		default: 300
+		type: Number,
+		default: 150
 	},
 	// 间距
 	gap: {
-		type: [Number, String],
-		default: 20
+		type: Number,
+		default: 10
 	}
 });
 
@@ -132,25 +132,33 @@ const duplicatedList = computed<MarqueeItem[]>(() => {
 const listStyle = computed(() => {
 	const isVertical = props.direction == "vertical";
 
-	return {
+	const style = {
 		transform: isVertical
-			? `translateY(${currentOffset.value}px)`
-			: `translateX(${currentOffset.value}px)`
+			? `translateY(${getUnit(currentOffset.value)})`
+			: `translateX(${getUnit(currentOffset.value)})`
 	};
+
+	// #ifdef APP
+	if (props.direction == "vertical") {
+		style["height"] = getUnit((props.itemHeight + props.gap) * duplicatedList.value.length);
+	} else {
+		style["width"] = getUnit((props.itemWidth + props.gap) * duplicatedList.value.length);
+	}
+	// #endif
+
+	return style;
 });
 
 /** 图片项样式 */
 const itemStyle = computed(() => {
 	const style = {};
 
-	const gap = `${getPx(props.gap)}px`;
-
 	if (props.direction == "vertical") {
-		style["height"] = `${getPx(props.itemHeight)}px`;
-		style["marginBottom"] = gap;
+		style["height"] = getUnit(props.itemHeight);
+		style["marginBottom"] = getUnit(props.gap);
 	} else {
-		style["width"] = `${getPx(props.itemWidth)}px`;
-		style["marginRight"] = gap;
+		style["width"] = getUnit(props.itemWidth);
+		style["marginRight"] = getUnit(props.gap);
 	}
 
 	return style;
@@ -159,7 +167,7 @@ const itemStyle = computed(() => {
 /** 单个项目的尺寸（包含间距） */
 const itemSize = computed(() => {
 	const size = props.direction == "vertical" ? props.itemHeight : props.itemWidth;
-	return getPx(size) + getPx(props.gap);
+	return size + props.gap;
 });
 
 /** 总的滚动距离 */

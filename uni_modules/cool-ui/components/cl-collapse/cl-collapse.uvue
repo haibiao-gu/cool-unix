@@ -8,7 +8,7 @@
 
 <script setup lang="ts">
 import { getCurrentInstance, ref, computed, watch } from "vue";
-import { parsePt } from "@/cool";
+import { parsePt } from "@/.cool";
 
 defineOptions({
 	name: "cl-collapse"

@@ -3,30 +3,28 @@
 		<view class="flex flex-row items-center mb-3">
 			<cl-text>买家评论 78</cl-text>
 
-			<cl-icon name="arrow-right-s-line" :pt="{ className: 'ml-auto' }"></cl-icon>
+			<cl-icon name="arrow-right-s-line" :size="16" :pt="{ className: 'ml-auto' }"></cl-icon>
 		</view>
 
 		<view class="flex flex-col">
 			<view class="flex flex-row my-3" v-for="item in list" :key="item.id">
-				<cl-avatar :size="72" rounded :src="item.avatar"></cl-avatar>
+				<cl-avatar :size="36" rounded :src="item.avatar"></cl-avatar>
 
 				<view class="flex-1 ml-4">
 					<view class="flex flex-row items-center justify-between">
-						<cl-text>{{ item.name }}</cl-text>
-						<cl-text color="info" :pt="{ className: 'text-xs' }">{{
-							item.time
-						}}</cl-text>
+						<cl-text :size="12">{{ item.name }}</cl-text>
+						<cl-text color="info" :size="10">{{ item.time }}</cl-text>
 					</view>
 
-					<cl-text ellipsis :lines="2" :pt="{ className: 'mt-1 text-sm' }">{{
+					<cl-text ellipsis :lines="2" :pt="{ className: 'mt-1' }">{{
 						item.content
 					}}</cl-text>
 				</view>
 
 				<view class="ml-3 relative">
 					<cl-image
-						:height="100"
-						:width="100"
+						:height="50"
+						:width="50"
 						:pt="{
 							inner: {
 								className: '!rounded-lg'
@@ -35,8 +33,8 @@
 						src="https://unix.cool-js.com/images/demo/bg1.png"
 					/>
 
-					<view class="bg-black/60 rounded-full px-1 absolute top-9 right-1">
-						<text class="text-xs text-white">+3</text>
+					<view class="bg-black/60 rounded-full px-1 absolute top-8 right-1">
+						<cl-text :size="10" color="white">+3</cl-text>
 					</view>
 				</view>
 			</view>

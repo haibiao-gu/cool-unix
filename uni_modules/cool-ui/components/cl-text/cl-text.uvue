@@ -5,8 +5,7 @@
 		:class="[
 			{
 				'cl-text--pre-wrap': preWrap,
-				'cl-text--ellipsis': ellipsis,
-				'cl-text--default-size': isDefaultSize
+				'cl-text--ellipsis': ellipsis
 			},
 			ptClassName
 		]"
@@ -26,8 +25,7 @@
 		:class="[
 			{
 				'cl-text--pre-wrap': preWrap,
-				'cl-text--ellipsis': ellipsis,
-				'cl-text--default-size': isDefaultSize
+				'cl-text--ellipsis': ellipsis
 			},
 			ptClassName
 		]"
@@ -44,7 +42,7 @@
 
 <script setup lang="ts">
 import { computed, type PropType } from "vue";
-import { ctx, hasTextColor, hasTextSize, isDark, parsePt, useCache } from "@/cool";
+import { ctx, hasTextColor, hasTextSize, isDark, parsePt, useCache } from "@/.cool";
 import type { ClTextType } from "../../types";
 import { useSize } from "../../hooks";
 
@@ -71,8 +69,8 @@ const props = defineProps({
 	},
 	// 字体大小
 	size: {
-		type: [Number, String] as PropType<number | string | null>,
-		default: null
+		type: Number,
+		default: 14
 	},
 	// 文本类型
 	type: {
@@ -153,7 +151,7 @@ type PassThrough = {
 const pt = computed(() => parsePt<PassThrough>(props.pt));
 
 // 文本大小
-const { getSize, getLineHeight, ptClassName } = useSize(() => pt.value.className ?? "");
+const { toScale, ptClassName } = useSize(() => pt.value.className ?? "");
 
 // 文本颜色
 const color = computed(() => {
@@ -185,9 +183,6 @@ const color = computed(() => {
 	return isDark.value ? "white" : (ctx.color["surface-700"] as string);
 });
 
-// 是否默认大小
-const isDefaultSize = computed(() => !hasTextSize(pt.value.className ?? ""));
-
 // 文本样式
 const textStyle = computed(() => {
 	const style = {};
@@ -203,23 +198,8 @@ const textStyle = computed(() => {
 	}
 
 	// 字号
-	const fontSize = getSize(props.size);
-	if (fontSize != null) {
-		style["fontSize"] = fontSize;
-	}
-
-	// 行高
-	// 判断是否多行文本
-	const isMultiLine = props.preWrap || !props.ellipsis || props.lines > 1;
-	if (isMultiLine) {
-		// 多行文本，行高交给浏览器/平台自动计算
-		style["lineHeight"] = "normal";
-	} else {
-		// 单行文本，使用原来的行高逻辑
-		const lineHeight = getLineHeight();
-		if (lineHeight != null) {
-			style["lineHeight"] = lineHeight;
-		}
+	if (!hasTextSize(ptClassName.value)) {
+		style["fontSize"] = toScale(props.size ?? 14) + "px";
 	}
 
 	return style;
@@ -348,10 +328,6 @@ const content = computed(() => {
 		line-break: anywhere;
 		-webkit-box-orient: vertical;
 		// #endif
-	}
-
-	&--default-size {
-		@apply text-md;
 	}
 }
 </style>

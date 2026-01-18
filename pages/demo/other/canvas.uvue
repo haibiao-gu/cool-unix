@@ -26,7 +26,7 @@
 </template>
 
 <script lang="ts" setup>
-import { t } from "@/locale";
+import { t } from "@/.cool";
 import { Canvas } from "@/uni_modules/cool-canvas";
 import { useUi } from "@/uni_modules/cool-ui";
 import { ref } from "vue";

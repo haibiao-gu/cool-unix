@@ -2,7 +2,6 @@
 	<view class="cl-loadmore-wrapper">
 		<view class="cl-loadmore">
 			<cl-loading
-				:size="28"
 				:pt="{
 					className: `mr-2 ${pt.icon?.className}`
 				}"
@@ -22,9 +21,8 @@
 </template>
 
 <script lang="ts" setup>
-import { t } from "@/locale";
 import { computed } from "vue";
-import { parsePt } from "@/cool";
+import { parsePt, t } from "@/.cool";
 import type { PassThroughProps } from "../../types";
 
 defineOptions({

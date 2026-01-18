@@ -52,7 +52,12 @@
 			<demo-item :label="t('自定义')">
 				<cl-text
 					:pt="{
-						className: 'mb-3 text-sm p-3 bg-surface-100 dark:!bg-surface-700 rounded-lg'
+						className: parseClass([
+							'mb-3 p-3 bg-surface-100 rounded-lg',
+							{
+								'!bg-surface-700': isDark
+							}
+						])
 					}"
 					v-if="form.selected4 != null && isShowValue"
 				>
@@ -104,7 +109,7 @@ import { reactive, ref } from "vue";
 import DemoItem from "../components/item.uvue";
 import DemoTips from "../components/tips.uvue";
 import { useUi, type ClSelectOption } from "@/uni_modules/cool-ui";
-import { t } from "@/locale";
+import { isDark, parseClass, t } from "@/.cool";
 
 const ui = useUi();
 

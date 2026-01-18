@@ -94,10 +94,9 @@
 </template>
 
 <script lang="ts" setup>
-import { t } from "@/locale";
 import DemoItem from "../components/item.uvue";
 import { ref } from "vue";
-import { isDark, parseClass } from "@/cool";
+import { isDark, parseClass, t } from "@/.cool";
 
 // list：李白《将进酒》
 const list = ref<UTSJSONObject[]>([

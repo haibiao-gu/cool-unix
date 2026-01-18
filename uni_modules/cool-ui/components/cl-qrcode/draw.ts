@@ -1,7 +1,7 @@
 /**
  * 导入所需的工具函数和依赖
  */
-import { isNull } from "@/cool";
+import { isNull } from "@/.cool";
 import { generateFrame } from "./qrcode";
 import type { ClQrcodeMode } from "../../types";
 

@@ -13,7 +13,7 @@ export type ClMarqueeProps = {
 	list?: string[];
 	direction?: "horizontal" | "vertical";
 	duration?: number;
-	itemHeight?: any;
-	itemWidth?: any;
-	gap?: any;
+	itemHeight?: number;
+	itemWidth?: number;
+	gap?: number;
 };

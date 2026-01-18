@@ -1,12 +1,13 @@
 import type { Justify, PassThroughProps } from "../../types";
 import type { ClIconProps } from "../cl-icon/props";
 import type { ClImageProps } from "../cl-image/props";
+import type { ClTextProps } from "../cl-text/props";
 
 export type ClListItemPassThrough = {
 	className?: string;
 	wrapper?: PassThroughProps;
 	inner?: PassThroughProps;
-	label?: PassThroughProps;
+	label?: ClTextProps;
 	content?: PassThroughProps;
 	icon?: ClIconProps;
 	image?: ClImageProps;

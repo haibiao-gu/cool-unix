@@ -1,9 +1,9 @@
 <template>
 	<cl-page back-top>
 		<view class="py-2">
-			<cl-waterfall ref="waterfallRef" :column="2" :gutter="16">
+			<cl-waterfall ref="waterfallRef" :column="2">
 				<template #item="{ item, index }">
-					<view class="bg-white mb-3 rounded-xl dark:!bg-gray-800 relative">
+					<view class="bg-white mb-2 rounded-xl dark:!bg-gray-800 relative">
 						<image
 							:src="item['image']"
 							mode="widthFix"
@@ -27,7 +27,7 @@
 
 							<cl-row class="mt-2" :pt="{ className: 'justify-end items-center' }">
 								<cl-icon name="heart-line"></cl-icon>
-								<cl-text :pt="{ className: 'text-sm ml-1' }">{{
+								<cl-text :size="12" :pt="{ className: 'ml-1' }">{{
 									item["likeCount"]
 								}}</cl-text>
 							</cl-row>
@@ -42,7 +42,7 @@
 </template>
 
 <script lang="ts" setup>
-import { random } from "@/cool";
+import { random } from "@/.cool";
 import { onMounted, ref } from "vue";
 
 const waterfallRef = ref<ClWaterfallComponentPublicInstance | null>(null);

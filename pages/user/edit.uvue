@@ -13,16 +13,16 @@
 
 					<cl-avatar
 						:src="userInfo?.avatarUrl"
-						:size="150"
-						:pt="{ className: '!rounded-3xl', icon: { size: 60 } }"
+						:size="80"
+						:pt="{ className: '!rounded-3xl', icon: { size: 32 } }"
 						@tap="uploadAvatar"
 					>
 					</cl-avatar>
 
 					<view
-						class="flex flex-col justify-center items-center absolute bottom-0 right-[-6rpx] bg-black rounded-full p-1 border border-solid border-white"
+						class="flex flex-col justify-center items-center absolute bottom-0 right-[-3px] bg-black rounded-full p-1 border border-solid border-white"
 					>
-						<cl-icon name="edit-line" color="white" :size="24"></cl-icon>
+						<cl-icon name="edit-line" color="white" :size="10"></cl-icon>
 					</view>
 				</view>
 			</view>
@@ -127,11 +127,10 @@
 </template>
 
 <script setup lang="ts">
-import { dayUts, router, upload, useRefs, useStore, type Response, userInfo } from "@/cool";
-import { t } from "@/locale";
+import { dayUts, router, upload, useRefs, useStore, type Response, userInfo, t } from "@/.cool";
 import { useCascader, useUi, type ClSelectOption } from "@/uni_modules/cool-ui";
 import { computed, ref } from "vue";
-import pca from "@/data/pca.json";
+import pca from "@/.cool/data/pca.json";
 
 const { user } = useStore();
 const ui = useUi();

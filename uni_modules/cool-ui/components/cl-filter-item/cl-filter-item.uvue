@@ -41,7 +41,7 @@
 </template>
 
 <script lang="ts" setup>
-import { parsePt, parseClass } from "@/cool";
+import { parsePt, parseClass } from "@/.cool";
 import { computed, onMounted, ref, watch, type PropType } from "vue";
 import type { PassThroughProps, ClFilterItemType, ClSelectOption } from "../../types";
 
@@ -164,6 +164,6 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .cl-filter-item {
-	@apply flex flex-row flex-1 justify-center items-center h-[72rpx];
+	@apply flex flex-row flex-1 justify-center items-center h-[36px];
 }
 </style>

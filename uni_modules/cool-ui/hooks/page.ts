@@ -1,4 +1,4 @@
-import { router, scroller, useParent } from "@/cool";
+import { router, scroller, useParent } from "@/.cool";
 
 class Page {
 	pageRef: ClPageComponentPublicInstance | null = null;

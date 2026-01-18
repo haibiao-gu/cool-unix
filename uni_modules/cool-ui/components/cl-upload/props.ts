@@ -1,12 +1,14 @@
 import type { ClUploadItem, PassThroughProps } from "../../types";
+import type { ClIconProps } from "../cl-icon/props";
+import type { ClTextProps } from "../cl-text/props";
 
 export type ClUploadPassThrough = {
 	className?: string;
 	item?: PassThroughProps;
 	add?: PassThroughProps;
 	image?: PassThroughProps;
-	icon?: PassThroughProps;
-	text?: PassThroughProps;
+	icon?: ClIconProps;
+	text?: ClTextProps;
 };
 
 export type ClUploadProps = {

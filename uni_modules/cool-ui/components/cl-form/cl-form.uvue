@@ -15,9 +15,8 @@
 
 <script setup lang="ts">
 import { computed, getCurrentInstance, nextTick, ref, watch, type PropType } from "vue";
-import { get, isEmpty, isNull, isString, parsePt, parseToObject } from "@/cool";
+import { get, isEmpty, isString, parsePt, parseToObject, $t, t } from "@/.cool";
 import type { ClFormLabelPosition, ClFormRule, ClFormValidateError } from "../../types";
-import { $t, t } from "@/locale";
 import { usePage } from "../../hooks";
 
 defineOptions({
@@ -49,7 +48,7 @@ const props = defineProps({
 	// 标签宽度
 	labelWidth: {
 		type: String,
-		default: "140rpx"
+		default: "70px"
 	},
 	// 是否显示必填星号
 	showAsterisk: {

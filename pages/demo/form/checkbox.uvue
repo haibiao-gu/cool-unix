@@ -126,8 +126,7 @@
 import { ref } from "vue";
 import DemoItem from "../components/item.uvue";
 import { useUi, type ClCheckboxOption } from "@/uni_modules/cool-ui";
-import { isDark, parseClass } from "@/cool";
-import { t } from "@/locale";
+import { isDark, parseClass, t } from "@/.cool";
 
 const ui = useUi();
 

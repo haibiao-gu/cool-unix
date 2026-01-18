@@ -16,7 +16,7 @@
 		<template #loading>
 			<cl-icon
 				:name="pt.icon?.name ?? 'user-smile-fill'"
-				:size="pt.icon?.size ?? 40"
+				:size="pt.icon?.size ?? 20"
 				:pt="{
 					className: parseClass([
 						[isDark, '!text-surface-50', '!text-surface-400'],
@@ -31,7 +31,7 @@
 </template>
 
 <script setup lang="ts">
-import { isDark, parseClass, parsePt } from "@/cool";
+import { isDark, parseClass, parsePt } from "@/.cool";
 import { computed } from "vue";
 import type { ClIconProps } from "../cl-icon/props";
 
@@ -49,8 +49,8 @@ const props = defineProps({
 		default: ""
 	},
 	size: {
-		type: [String, Number],
-		default: 80
+		type: Number,
+		default: 40
 	},
 	rounded: {
 		type: Boolean,

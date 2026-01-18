@@ -18,8 +18,8 @@
 			:src="imageUrl"
 			:style="{
 				transform: `rotate(${currentAngle}deg)`,
-				height: parseRpx(imageSize!),
-				width: parseRpx(imageSize!)
+				height: getUnit(imageSize),
+				width: getUnit(imageSize)
 			}"
 			mode="aspectFill"
 		></image>
@@ -36,7 +36,7 @@
 				pt.track?.className
 			]"
 			:style="{
-				height: size + 'px'
+				height: getUnit(size)
 			}"
 		>
 			<!-- 滑动进度条 -->
@@ -74,7 +74,7 @@
 			>
 				<cl-icon
 					:name="sliderIcon"
-					:size="44"
+					:size="22"
 					:color="sliderColor"
 					:pt="{
 						className: parseClass([pt.icon?.className])
@@ -99,10 +99,8 @@
 
 <script setup lang="ts">
 import { computed, ref, watch, nextTick, getCurrentInstance, type PropType } from "vue";
-import { isDark, parseClass, parsePt, parseRpx, random } from "@/cool";
+import { isDark, parseClass, parsePt, getUnit, random, t } from "@/.cool";
 import type { PassThroughProps } from "../../types";
-import { vibrate } from "@/uni_modules/cool-vibrate";
-import { t } from "@/locale";
 
 defineOptions({
 	name: "cl-slide-verify"
@@ -143,7 +141,7 @@ const props = defineProps({
 	// 图片大小（图片模式使用）
 	imageSize: {
 		type: [Number, String],
-		default: 300
+		default: 150
 	},
 	// 角度容错范围
 	angleThreshold: {
@@ -328,10 +326,17 @@ function init() {
 
 // 触摸开始事件
 function onTouchStart(e: TouchEvent) {
-	if (props.disabled || isSuccess.value || isFail.value) return; // 禁用或已完成时不处理
-	isDragging.value = true; // 标记为拖动中
-	startX.value = e.touches[0].clientX; // 记录起始X坐标
-	vibrate(1); // 震动反馈
+	// 禁用或已完成时不处理
+	if (props.disabled || isSuccess.value || isFail.value) return;
+
+	// 标记为拖动中
+	isDragging.value = true;
+
+	// 记录起始X坐标
+	startX.value = e.touches[0].clientX;
+
+	// 震动反馈
+	uni.$emit("cool.vibrate");
 }
 
 // 触摸移动事件
@@ -384,7 +389,9 @@ function onTouchEnd() {
 			angle: currentAngle.value
 		});
 	}
-	vibrate(1); // 震动反馈
+
+	// 震动反馈
+	uni.$emit("cool.vibrate");
 }
 
 // 监听模式变化，重新初始化

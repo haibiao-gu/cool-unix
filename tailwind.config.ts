@@ -442,7 +442,12 @@ function getSurface(name: surfaceColor): Record<string, string> {
 const resolve = (dir: string) => join(__dirname, dir);
 
 export default {
-	content: [resolve("./**/*.{uvue,vue}"), "!**/node_modules/**", "!**/dist/**"],
+	content: [
+		resolve("./**/*.{uvue,vue}"),
+		"./.cool/**/*.{uvue,vue}",
+		"!**/node_modules/**",
+		"!**/dist/**"
+	],
 	darkMode: "class",
 	theme: {
 		extend: {

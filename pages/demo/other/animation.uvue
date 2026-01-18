@@ -4,16 +4,16 @@
 			<demo-item :label="t('基础动画')">
 				<view class="row">
 					<view class="item" ref="rotateRef">
-						<cl-text color="white" :pt="{ className: 'text-sm' }">rotate</cl-text>
+						<cl-text color="white">rotate</cl-text>
 					</view>
 					<view class="item" ref="scaleRef">
-						<cl-text color="white" :pt="{ className: 'text-sm' }">scale</cl-text>
+						<cl-text color="white">scale</cl-text>
 					</view>
 					<view class="item" ref="moveRef">
-						<cl-text color="white" :pt="{ className: 'text-sm' }">move</cl-text>
+						<cl-text color="white">move</cl-text>
 					</view>
 					<view class="item" ref="opacityRef">
-						<cl-text color="white" :pt="{ className: 'text-sm' }">opacity</cl-text>
+						<cl-text color="white">opacity</cl-text>
 					</view>
 				</view>
 			</demo-item>
@@ -21,10 +21,10 @@
 			<demo-item :label="t('淡入淡出')">
 				<view class="row">
 					<view class="item" ref="fadeInRef">
-						<cl-text color="white" :pt="{ className: 'text-sm' }">fadeIn</cl-text>
+						<cl-text color="white">fadeIn</cl-text>
 					</view>
 					<view class="item" ref="fadeOutRef">
-						<cl-text color="white" :pt="{ className: 'text-sm' }">fadeOut</cl-text>
+						<cl-text color="white">fadeOut</cl-text>
 					</view>
 				</view>
 
@@ -34,16 +34,16 @@
 			<demo-item :label="t('滑入')">
 				<view class="row">
 					<view class="item" ref="slideLeftRef">
-						<cl-text color="white" :pt="{ className: 'text-sm' }">slideLeft</cl-text>
+						<cl-text color="white">slideLeft</cl-text>
 					</view>
 					<view class="item" ref="slideRightRef">
-						<cl-text color="white" :pt="{ className: 'text-sm' }">slideRight</cl-text>
+						<cl-text color="white">slideRight</cl-text>
 					</view>
 					<view class="item" ref="slideUpRef">
-						<cl-text color="white" :pt="{ className: 'text-sm' }">slideUp</cl-text>
+						<cl-text color="white">slideUp</cl-text>
 					</view>
 					<view class="item" ref="slideDownRef">
-						<cl-text color="white" :pt="{ className: 'text-sm' }">slideDown</cl-text>
+						<cl-text color="white">slideDown</cl-text>
 					</view>
 				</view>
 
@@ -53,10 +53,10 @@
 			<demo-item label="缩放">
 				<view class="row">
 					<view class="item" ref="zoomInRef">
-						<cl-text color="white" :pt="{ className: 'text-sm' }">zoomIn</cl-text>
+						<cl-text color="white">zoomIn</cl-text>
 					</view>
 					<view class="item" ref="zoomOutRef">
-						<cl-text color="white" :pt="{ className: 'text-sm' }">zoomOut</cl-text>
+						<cl-text color="white">zoomOut</cl-text>
 					</view>
 				</view>
 
@@ -66,13 +66,13 @@
 			<demo-item :label="t('旋转翻转')">
 				<view class="row">
 					<view class="item" ref="rotateInRef">
-						<cl-text color="white" :pt="{ className: 'text-sm' }">rotateIn</cl-text>
+						<cl-text color="white">rotateIn</cl-text>
 					</view>
 					<view class="item" ref="flipXRef">
-						<cl-text color="white" :pt="{ className: 'text-sm' }">flipX</cl-text>
+						<cl-text color="white">flipX</cl-text>
 					</view>
 					<view class="item" ref="flipYRef">
-						<cl-text color="white" :pt="{ className: 'text-sm' }">flipY</cl-text>
+						<cl-text color="white">flipY</cl-text>
 					</view>
 				</view>
 
@@ -82,13 +82,13 @@
 			<demo-item :label="t('摇摆抖动')">
 				<view class="row">
 					<view class="item" ref="shakeRef">
-						<cl-text color="white" :pt="{ className: 'text-sm' }">shake</cl-text>
+						<cl-text color="white">shake</cl-text>
 					</view>
 					<view class="item" ref="swingRef">
-						<cl-text color="white" :pt="{ className: 'text-sm' }">swing</cl-text>
+						<cl-text color="white">swing</cl-text>
 					</view>
 					<view class="item" ref="wobbleRef">
-						<cl-text color="white" :pt="{ className: 'text-sm' }">wobble</cl-text>
+						<cl-text color="white">wobble</cl-text>
 					</view>
 				</view>
 
@@ -98,13 +98,13 @@
 			<demo-item :label="t('特殊效果')">
 				<view class="row">
 					<view class="item" ref="rollInRef">
-						<cl-text color="white" :pt="{ className: 'text-sm' }">rollIn</cl-text>
+						<cl-text color="white">rollIn</cl-text>
 					</view>
 					<view class="item" ref="lightSpeedRef">
-						<cl-text color="white" :pt="{ className: 'text-sm' }">lightSpeed</cl-text>
+						<cl-text color="white">lightSpeed</cl-text>
 					</view>
 					<view class="item" ref="rippleRef">
-						<cl-text color="white" :pt="{ className: 'text-sm' }">ripple</cl-text>
+						<cl-text color="white">ripple</cl-text>
 					</view>
 				</view>
 
@@ -114,7 +114,7 @@
 			<demo-item :label="t('组合动画')">
 				<view class="row">
 					<view class="item" ref="sequenceRef">
-						<cl-text color="white" :pt="{ className: 'text-sm' }">sequence</cl-text>
+						<cl-text color="white">sequence</cl-text>
 					</view>
 				</view>
 
@@ -125,10 +125,10 @@
 </template>
 
 <script lang="ts" setup>
-import { AnimationEngine, createAnimation } from "@/cool";
+import { AnimationEngine, createAnimation } from "@/.cool";
 import { ref } from "vue";
 import DemoItem from "../components/item.uvue";
-import { t } from "@/locale";
+import { t } from "@/.cool";
 
 // 基础动画引用
 const rotateRef = ref<UniElement | null>(null);
@@ -184,7 +184,7 @@ function onMove() {
 		loop: -1,
 		alternate: true
 	})
-		.translateX("0rpx", "300rpx")
+		.translateX("0px", "150px")
 		.play();
 }
 
@@ -273,11 +273,11 @@ onReady(() => {
 <style lang="scss" scoped>
 .row {
 	@apply flex flex-row justify-between items-center overflow-visible;
-	margin: 0 -10rpx 20rpx -10rpx;
+	margin: 0 -5px 10px -5px;
 
 	.item {
 		@apply flex items-center justify-center h-16 bg-primary-500 rounded-xl flex-1;
-		margin: 0 10rpx;
+		margin: 0 5px;
 	}
 }
 </style>

@@ -11,8 +11,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
 import { Canvas, useCanvas } from "../../hooks";
-import { canvasToPng } from "@/cool";
-import { t } from "@/locale";
+import { canvasToPng, t } from "@/.cool";
 import { useUi } from "@/uni_modules/cool-ui";
 
 const props = defineProps({

@@ -3,7 +3,7 @@
 		<view class="cl-picker-view__header" v-if="headers.length > 0">
 			<cl-text
 				:pt="{
-					className: 'flex-1 text-sm text-center'
+					className: 'flex-1 text-center'
 				}"
 				v-for="(label, index) in headers"
 				:key="index"
@@ -12,9 +12,9 @@
 		</view>
 
 		<view
-			class="px-[10rpx]"
+			class="px-1"
 			:style="{
-				height: parseRpx(height)
+				height: getUnit(height)
 			}"
 		>
 			<picker-view
@@ -38,7 +38,6 @@
 						:style="{
 							height: `${itemHeight * column.length}px`
 						}"
-						android-layer-type="hardware"
 					></view>
 					<!-- #endif -->
 
@@ -77,11 +76,11 @@ import {
 	isEqual,
 	isNull,
 	parseClass,
-	rpx2px,
-	parseRpx
-} from "@/cool";
+	getUnit,
+	isAppAndroid
+} from "@/.cool";
 import type { ClSelectOption } from "../../types";
-import { computed, nextTick, onMounted, shallowRef, watch } from "vue";
+import { computed, nextTick, onMounted, ref, shallowRef, watch } from "vue";
 import type { PropType } from "vue";
 import { useSize } from "../../hooks";
 
@@ -113,7 +112,7 @@ const props = defineProps({
 	// 选择器高度
 	height: {
 		type: Number,
-		default: 600
+		default: 300
 	}
 });
 
@@ -127,54 +126,6 @@ const { windowWidth } = uni.getWindowInfo();
 // 顶部显示表头
 const headers = computed(() => {
 	return props.headers.slice(0, props.columns.length);
-});
-
-// 遮罩层样式
-const maskStyle = computed(() => {
-	if (isDark.value) {
-		if (isAppIOS()) {
-			return `background-color: rgba(0, 0, 0, 0);`;
-		}
-
-		return `background-image: linear-gradient(
-			180deg,
-			rgba(0, 0, 0, 0),
-			rgba(0, 0, 0, 0)
-		)`;
-	}
-
-	return "";
-});
-
-// 计算选择器列样式
-const indicatorStyle = computed(() => {
-	// 根据窗口宽度和列数计算每列宽度
-	const width = ((windowWidth - rpx2px(20)) / props.columns.length - rpx2px(2) - 8).toFixed(0);
-
-	let str = "";
-
-	// 选择器列样式配置
-	const style = {
-		height: `${props.itemHeight}px`,
-		width: `${width}px`,
-		left: "4px",
-		backgroundColor: "rgba(10, 10, 10, 0.04)",
-		borderRadius: "10px",
-		border: "1rpx solid rgba(10, 10, 10, 0.2)"
-	};
-
-	// 深色模式
-	if (isDark.value) {
-		style.backgroundColor = "rgba(0, 0, 0, 0.1)";
-		style.border = "1rpx solid rgba(255, 255, 255, 0.3)";
-	}
-
-	// 构建样式字符串
-	forInObject(style, (value, key) => {
-		str += `${key}: ${value};`;
-	});
-
-	return str;
 });
 
 // 监听选择器值改变事件
@@ -246,15 +197,80 @@ const renderColumnItem = () => {
 	}
 };
 
+// 遮罩层样式
+const maskStyle = ref("");
+const renderMaskStyle = () => {
+	if (isDark.value) {
+		maskStyle.value = `background-image: linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0))`;
+	}
+};
+
+// 计算选择器列样式
+const indicatorStyle = ref("");
+const renderIndicatorStyle = () => {
+	// 计算选择器列样式
+	let str = "";
+
+	// 计算每列的宽
+	const width = Math.ceil((windowWidth - 8) / props.columns.length - 10);
+
+	// 选择器列样式配置
+	const style = {
+		height: `${props.itemHeight}px`,
+		width: `${width}px`,
+		left: "4px",
+		backgroundColor: "rgba(10, 10, 10, 0.04)",
+		borderRadius: "10px",
+		border: "1px solid rgba(10, 10, 10, 0.2)"
+	};
+
+	// 深色模式
+	if (isDark.value) {
+		style.backgroundColor = "rgba(0, 0, 0, 0.01)";
+		style.border = "1px solid rgba(255, 255, 255, 0.3)";
+	}
+
+	// ios 端样式
+	if (isAppIOS()) {
+		style.backgroundColor = isDark.value ? "rgba(0, 0, 0, 0.2)" : "rgba(0, 0, 0, 0.1)";
+
+		if (isDark.value) {
+			style.border = "none";
+			style.width = `${width - 3}px`;
+		} else {
+			style.width = `${width + 2}px`;
+		}
+	}
+
+	// android 端样式
+	if (isAppAndroid()) {
+		style.width = `${width + 1}px`;
+	}
+
+	// 构建样式字符串
+	forInObject(style, (value, key) => {
+		str += `${key}: ${value};`;
+	});
+
+	indicatorStyle.value = str;
+};
+
+// 渲染列和样式
+const render = () => {
+	renderColumnItem();
+	renderMaskStyle();
+	renderIndicatorStyle();
+};
+
 onMounted(() => {
 	nextTick(() => {
-		renderColumnItem();
+		render();
 	});
 
 	watch(
 		computed(() => [isDark.value, props.columns, props.itemHeight]),
 		() => {
-			renderColumnItem();
+			render();
 		}
 	);
 });

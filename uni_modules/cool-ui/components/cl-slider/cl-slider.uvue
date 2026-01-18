@@ -11,14 +11,14 @@
 		<view
 			class="cl-slider__inner"
 			:style="{
-				height: blockSize + 8 + 'rpx'
+				height: blockSize + 4 + 'px'
 			}"
 		>
 			<view
 				class="cl-slider__track"
 				:class="[pt.track?.className]"
 				:style="{
-					height: trackHeight + 'rpx'
+					height: trackHeight + 'px'
 				}"
 			>
 				<view
@@ -53,7 +53,7 @@
 			<view
 				class="cl-slider__picker"
 				:style="{
-					height: blockSize * 1.5 + 'rpx'
+					height: blockSize * 1.5 + 'px'
 				}"
 				@touchstart.prevent="onTouchStart"
 				@touchmove.prevent="onTouchMove"
@@ -66,7 +66,7 @@
 			<cl-text
 				v-if="showValue"
 				:pt="{
-					className: parseClass(['text-center w-[100rpx]', pt.value?.className])
+					className: parseClass(['text-center w-[50px]', pt.value?.className])
 				}"
 			>
 				{{ displayValue }}
@@ -77,7 +77,7 @@
 
 <script setup lang="ts">
 import { computed, getCurrentInstance, nextTick, onMounted, ref, watch, type PropType } from "vue";
-import { parseClass, parsePt, rpx2px } from "@/cool";
+import { parseClass, parsePt } from "@/.cool";
 import type { PassThroughProps } from "../../types";
 import { useForm } from "../../hooks";
 
@@ -125,12 +125,12 @@ const props = defineProps({
 	// 滑块的大小
 	blockSize: {
 		type: Number,
-		default: 40
+		default: 20
 	},
 	// 线的高度
 	trackHeight: {
 		type: Number,
-		default: 8
+		default: 4
 	},
 	// 是否显示当前值
 	showValue: {
@@ -228,7 +228,7 @@ function createThumbStyle(percentPosition: number) {
 	const style = {};
 
 	// 计算滑块的有效移动范围（扣除滑块自身宽度，防止超出轨道）
-	const effectiveTrackWidth = trackWidth.value - rpx2px(props.blockSize) + 1;
+	const effectiveTrackWidth = trackWidth.value - props.blockSize + 1;
 	const leftPosition = (percentPosition / 100) * effectiveTrackWidth;
 
 	// 确保滑块位置在有效范围内
@@ -236,8 +236,8 @@ function createThumbStyle(percentPosition: number) {
 
 	// 设置滑块的位置和尺寸
 	style["left"] = `${finalLeftPosition}px`;
-	style["width"] = `${rpx2px(props.blockSize)}px`;
-	style["height"] = `${rpx2px(props.blockSize)}px`;
+	style["width"] = `${props.blockSize}px`;
+	style["height"] = `${props.blockSize}px`;
 
 	return style;
 }
@@ -535,8 +535,8 @@ onMounted(() => {
 		@apply bg-primary-500;
 		pointer-events: none;
 		z-index: 1;
-		border-width: 4rpx;
-		box-shadow: 0 0 2rpx 2rpx rgba(100, 100, 100, 0.1);
+		border-width: 2px;
+		box-shadow: 0 0 1px 1px rgba(100, 100, 100, 0.1);
 
 		&--min {
 			z-index: 2;

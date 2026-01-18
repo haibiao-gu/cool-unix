@@ -11,6 +11,5 @@ export type ClListProps = {
 	className?: string;
 	pt?: ClListPassThrough;
 	list?: ClListItem[];
-	title?: string;
 	border?: boolean;
 };

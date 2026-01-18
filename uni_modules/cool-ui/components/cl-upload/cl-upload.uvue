@@ -56,20 +56,23 @@
 		>
 			<cl-icon
 				:name="icon"
+				:size="pt.icon?.size ?? 24"
+				:color="pt.icon?.color"
 				:pt="{
 					className: parseClass([
 						[isDark, 'text-white', 'text-surface-400'],
 						pt.icon?.className
 					])
 				}"
-				:size="50"
 			></cl-icon>
 
 			<cl-text
+				:size="pt.text?.size ?? 10"
+				:color="pt.text?.color"
 				:pt="{
 					className: parseClass([
 						[isDark, 'text-white', 'text-surface-500'],
-						'text-xs mt-1 text-center',
+						'mt-1 text-center',
 						pt.text?.className
 					])
 				}"
@@ -80,11 +83,12 @@
 </template>
 
 <script lang="ts" setup>
-import { forInObject, isDark, parseClass, parsePt, parseRpx, uploadFile, uuid } from "@/cool";
-import { t } from "@/locale";
+import { forInObject, isDark, parseClass, parsePt, uploadFile, uuid, getUnit, t } from "@/.cool";
 import { computed, reactive, ref, watch, type PropType } from "vue";
 import type { ClUploadItem, PassThroughProps } from "../../types";
 import { useForm } from "../../hooks";
+import type { ClIconProps } from "../cl-icon/props";
+import type { ClTextProps } from "../cl-text/props";
 
 defineOptions({
 	name: "cl-upload"
@@ -124,12 +128,12 @@ const props = defineProps({
 	// 上传区域高度
 	height: {
 		type: [Number, String],
-		default: 150
+		default: 72
 	},
 	// 上传区域宽度
 	width: {
 		type: [Number, String],
-		default: 150
+		default: 72
 	},
 	// 是否支持多选
 	multiple: {
@@ -176,8 +180,8 @@ type PassThrough = {
 	item?: PassThroughProps;
 	add?: PassThroughProps;
 	image?: PassThroughProps;
-	icon?: PassThroughProps;
-	text?: PassThroughProps;
+	icon?: ClIconProps;
+	text?: ClTextProps;
 };
 
 // 解析透传属性
@@ -205,8 +209,8 @@ const isAdd = computed(() => {
 // 计算上传区域的样式
 const uploadStyle = computed(() => {
 	return {
-		height: parseRpx(props.height),
-		width: parseRpx(props.width)
+		height: getUnit(props.height),
+		width: getUnit(props.width)
 	};
 });
 

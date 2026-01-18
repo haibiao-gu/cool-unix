@@ -36,7 +36,7 @@
 </template>
 
 <script lang="ts" setup>
-import { t } from "@/locale";
+import { t } from "@/.cool";
 import { useUi } from "@/uni_modules/cool-ui";
 import DemoItem from "../components/item.uvue";
 

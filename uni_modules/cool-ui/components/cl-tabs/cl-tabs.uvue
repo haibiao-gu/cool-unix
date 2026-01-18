@@ -12,7 +12,7 @@
 			pt.className
 		]"
 		:style="{
-			height: parseRpx(height!)
+			height: getUnit(height)
 		}"
 	>
 		<scroll-view
@@ -30,7 +30,7 @@
 					:key="index"
 					:class="[pt.item?.className]"
 					:style="{
-						padding: `0 ${parseRpx(gutter)}`
+						padding: `0 ${getUnit(gutter)}`
 					}"
 					@tap="change(index)"
 				>
@@ -73,7 +73,7 @@
 
 <script lang="ts" setup>
 import { type PropType, computed, getCurrentInstance, nextTick, onMounted, ref, watch } from "vue";
-import { isDark, isEmpty, isNull, parseClass, parsePt, parseRpx } from "@/cool";
+import { getUnit, isDark, isEmpty, isNull, parseClass, parsePt } from "@/.cool";
 import type { ClTabsItem, PassThroughProps } from "../../types";
 
 // 定义标签类型
@@ -106,7 +106,7 @@ const props = defineProps({
 	// 标签高度
 	height: {
 		type: [String, Number] as PropType<string | number>,
-		default: 80
+		default: 40
 	},
 	// 标签列表
 	list: {
@@ -121,7 +121,7 @@ const props = defineProps({
 	// 标签间隔
 	gutter: {
 		type: Number,
-		default: 30
+		default: 14
 	},
 	// 选中标签的颜色
 	color: {
@@ -416,9 +416,9 @@ onMounted(() => {
 
 	&__line {
 		@apply bg-primary-500 rounded-md absolute;
-		height: 4rpx;
+		height: 2px;
 		width: 16px;
-		bottom: 2rpx;
+		bottom: 1px;
 		left: 0;
 		transition-property: transform;
 		transition-duration: 0.3s;

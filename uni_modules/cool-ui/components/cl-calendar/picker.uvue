@@ -18,11 +18,7 @@
 			</view>
 
 			<view class="cl-calendar-picker__date" @tap="toMode('year')">
-				<cl-text
-					:pt="{
-						className: 'text-lg'
-					}"
-				>
+				<cl-text :size="18">
 					{{ title }}
 				</cl-text>
 			</view>
@@ -57,8 +53,7 @@
 </template>
 
 <script lang="ts" setup>
-import { first, isDark, last, parseClass } from "@/cool";
-import { t } from "@/locale";
+import { first, isDark, last, parseClass, t } from "@/.cool";
 import { computed, ref } from "vue";
 
 defineOptions({
@@ -236,8 +231,8 @@ defineExpose({
 	&__prev,
 	&__next {
 		@apply flex flex-row items-center justify-center rounded-full bg-surface-100;
-		width: 60rpx;
-		height: 60rpx;
+		width: 30px;
+		height: 30px;
 
 		&.is-dark {
 			@apply bg-surface-700;
@@ -254,7 +249,7 @@ defineExpose({
 
 	&__item {
 		@apply flex flex-row items-center justify-center;
-		height: 100rpx;
+		height: 50px;
 		width: 25%;
 
 		&-bg {

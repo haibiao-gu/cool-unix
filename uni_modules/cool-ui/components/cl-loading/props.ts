@@ -9,6 +9,6 @@ export type ClLoadingProps = {
 	className?: string;
 	pt?: ClLoadingPassThrough;
 	loading?: boolean;
-	size?: any;
+	size?: number;
 	color?: string;
 };

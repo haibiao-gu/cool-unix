@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import { getSafeAreaHeight, parsePt } from "@/cool";
+import { getSafeAreaHeight, parsePt } from "@/.cool";
 import { computed, type PropType } from "vue";
 
 defineOptions({

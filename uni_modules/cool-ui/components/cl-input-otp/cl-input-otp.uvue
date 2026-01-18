@@ -60,7 +60,7 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, ref, watch, type PropType } from "vue";
 import type { ClInputType, PassThroughProps } from "../../types";
-import { AnimationEngine, createAnimation, isEmpty, last, parsePt, isDark } from "@/cool";
+import { AnimationEngine, createAnimation, isEmpty, last, parsePt, isDark } from "@/.cool";
 
 defineOptions({
 	name: "cl-input-otp"
@@ -234,9 +234,9 @@ onMounted(() => {
 
 	&__list {
 		@apply flex flex-row relative;
-		margin: 0 -10rpx;
+		margin: 0 -5px;
 		// #ifdef APP-IOS
-		padding-bottom: 0.1rpx;
+		padding-bottom: 0.05px;
 		// #endif
 	}
 
@@ -244,9 +244,9 @@ onMounted(() => {
 		@apply flex flex-row items-center justify-center duration-100;
 		@apply border border-solid border-surface-200 rounded-lg;
 		background-color: #fff;
-		height: 80rpx;
-		width: 80rpx;
-		margin: 0 10rpx;
+		height: 40px;
+		width: 40px;
+		margin: 0 5px;
 
 		&.is-disabled {
 			@apply bg-surface-100 opacity-70;
@@ -287,8 +287,8 @@ onMounted(() => {
 
 	&__cursor {
 		@apply absolute bg-primary-500;
-		width: 2rpx;
-		height: 24rpx;
+		width: 1px;
+		height: 12px;
 
 		// #ifndef APP
 		animation: blink 1s infinite;

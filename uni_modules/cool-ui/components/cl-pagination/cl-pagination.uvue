@@ -15,7 +15,7 @@
 			<slot name="prev" :disabled="value == 1">
 				<cl-icon
 					:name="pt.prevIcon?.name ?? 'arrow-left-s-line'"
-					:size="pt.prevIcon?.size"
+					:size="pt.prevIcon?.size ?? 16"
 					:color="pt.prevIcon?.color"
 					:pt="{
 						className: pt.prevIcon?.className
@@ -66,7 +66,7 @@
 			<slot name="next" :disabled="value == totalPage">
 				<cl-icon
 					:name="pt.nextIcon?.name ?? 'arrow-right-s-line'"
-					:size="pt.nextIcon?.size"
+					:size="pt.nextIcon?.size ?? 16"
 					:color="pt.nextIcon?.color"
 					:pt="{
 						className: pt.nextIcon?.className
@@ -79,7 +79,7 @@
 
 <script setup lang="ts">
 import type { PassThroughProps } from "../../types";
-import { isDark, parseClass, parsePt } from "@/cool";
+import { isDark, parseClass, parsePt } from "@/.cool";
 import { computed, ref, watch } from "vue";
 import type { ClIconProps } from "../cl-icon/props";
 
@@ -225,8 +225,8 @@ defineExpose({
 	&__next,
 	&__item {
 		@apply flex flex-row items-center justify-center bg-surface-100 rounded-lg;
-		height: 60rpx;
-		width: 60rpx;
+		height: 30px;
+		width: 30px;
 
 		&.is-disabled {
 			@apply opacity-50;
@@ -238,7 +238,7 @@ defineExpose({
 	}
 
 	&__item {
-		margin: 0 5rpx;
+		margin: 0 3px;
 
 		&.is-active {
 			@apply bg-primary-500;
@@ -246,11 +246,11 @@ defineExpose({
 	}
 
 	&__prev {
-		margin-right: 5rpx;
+		margin-right: 3px;
 	}
 
 	&__next {
-		margin-left: 5rpx;
+		margin-left: 3px;
 	}
 }
 </style>

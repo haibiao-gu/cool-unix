@@ -8,7 +8,7 @@
 			pt.className
 		]"
 		:style="{
-			height: parseRpx(size!)
+			height: getUnit(size)
 		}"
 	>
 		<view
@@ -23,8 +23,8 @@
 			hover-class="!bg-surface-200"
 			:hover-stay-time="250"
 			:style="{
-				height: parseRpx(size!),
-				width: parseRpx(size!)
+				height: getUnit(size),
+				width: getUnit(size)
 			}"
 			@touchstart="onMinus"
 			@touchend="longPress.stop"
@@ -32,7 +32,7 @@
 		>
 			<cl-icon
 				name="subtract-line"
-				:size="pt.op?.icon?.size ?? 36"
+				:size="pt.op?.icon?.size ?? 16"
 				:color="pt.op?.icon?.color ?? 'info'"
 				:pt="{
 					className: pt.op?.icon?.className
@@ -50,7 +50,7 @@
 				:placeholder="placeholder"
 				:hold-keyboard="false"
 				:pt="{
-					className: `!h-full w-[120rpx] ${pt.value?.className}`,
+					className: `!h-full w-[50px] ${pt.value?.className}`,
 					inner: {
 						className: `text-center ${pt.value?.input?.className}`
 					}
@@ -71,8 +71,8 @@
 			hover-class="!bg-primary-600"
 			:hover-stay-time="250"
 			:style="{
-				height: parseRpx(size!),
-				width: parseRpx(size!)
+				height: getUnit(size),
+				width: getUnit(size)
 			}"
 			@touchstart="onPlus"
 			@touchend="longPress.stop"
@@ -80,7 +80,7 @@
 		>
 			<cl-icon
 				name="add-line"
-				:size="pt.op?.icon?.size ?? 36"
+				:size="pt.op?.icon?.size ?? 16"
 				:color="pt.op?.icon?.color ?? 'white'"
 				:pt="{
 					className: pt.op?.icon?.className
@@ -94,7 +94,7 @@
 import { computed, nextTick, ref, watch, type PropType } from "vue";
 import type { PassThroughProps } from "../../types";
 import type { ClIconProps } from "../cl-icon/props";
-import { useLongPress, parsePt, parseRpx } from "@/cool";
+import { useLongPress, parsePt, getUnit } from "@/.cool";
 import { useForm } from "../../hooks";
 
 defineOptions({
@@ -150,7 +150,7 @@ const props = defineProps({
 	// 组件大小 - 控制加减按钮的尺寸,支持数字或字符串形式
 	size: {
 		type: [Number, String] as PropType<number | string>,
-		default: 50
+		default: 24
 	}
 });
 
@@ -317,7 +317,7 @@ watch(
 
 	&__plus,
 	&__minus {
-		@apply flex items-center justify-center rounded-md bg-surface-100;
+		@apply flex items-center justify-center rounded-lg bg-surface-100;
 
 		&.is-disabled {
 			@apply opacity-50;
@@ -330,7 +330,7 @@ watch(
 
 	&__value {
 		@apply flex flex-row items-center justify-center h-full;
-		margin: 0 12rpx;
+		margin: 0 6px;
 	}
 }
 </style>

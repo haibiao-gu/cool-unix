@@ -26,7 +26,7 @@ import { ref } from "vue";
 import Theme from "./theme.uvue";
 import Ui from "./ui.uvue";
 import { config } from "@/config";
-import { scroller } from "@/cool";
+import { scroller } from "@/.cool";
 
 defineOptions({
 	name: "cl-page"

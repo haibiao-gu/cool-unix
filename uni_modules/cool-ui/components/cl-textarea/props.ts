@@ -16,6 +16,7 @@ export type ClTextareaProps = {
 	name?: string;
 	placeholder?: string;
 	placeholderClass?: string;
+	placeholderStyle?: string;
 	maxlength?: number;
 	autofocus?: boolean;
 	confirmType?: "done" | "go" | "next" | "search" | "send";

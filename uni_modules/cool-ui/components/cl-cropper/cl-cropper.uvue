@@ -52,23 +52,13 @@
 					<view class="cl-cropper__guide-line cl-cropper__guide-line--v2"></view>
 
 					<view class="cl-cropper__guide-text">
-						<cl-text
-							:pt="{
-								className: 'text-xl'
-							}"
-							color="white"
-						>
+						<cl-text :size="18" color="white">
 							{{ cropBox.width }}
 						</cl-text>
 
 						<cl-icon name="close-line" color="white"></cl-icon>
 
-						<cl-text
-							:pt="{
-								className: 'text-xl'
-							}"
-							color="white"
-						>
+						<cl-text :size="18" color="white">
 							{{ cropBox.height }}
 						</cl-text>
 					</view>
@@ -92,7 +82,7 @@
 		<view class="cl-cropper__op" :class="[pt.op?.className]" :style="opStyle" @touchmove.stop>
 			<!-- 关闭 -->
 			<view class="cl-cropper__op-item" :class="[pt.opItem?.className]">
-				<cl-icon name="close-line" color="white" :size="50" @tap="close"></cl-icon>
+				<cl-icon name="close-line" color="white" :size="25" @tap="close"></cl-icon>
 			</view>
 
 			<!-- 旋转 -->
@@ -100,24 +90,24 @@
 				<cl-icon
 					name="anticlockwise-line"
 					color="white"
-					:size="40"
+					:size="20"
 					@tap="rotate90"
 				></cl-icon>
 			</view>
 
 			<!-- 重置 -->
 			<view class="cl-cropper__op-item" :class="[pt.opItem?.className]">
-				<cl-icon name="reset-right-line" color="white" :size="40" @tap="reset"></cl-icon>
+				<cl-icon name="reset-right-line" color="white" :size="20" @tap="reset"></cl-icon>
 			</view>
 
 			<!-- 重新选择 -->
 			<view class="cl-cropper__op-item" :class="[pt.opItem?.className]">
-				<cl-icon name="image-line" color="white" :size="40" @tap="chooseImage"></cl-icon>
+				<cl-icon name="image-line" color="white" :size="20" @tap="chooseImage"></cl-icon>
 			</view>
 
 			<!-- 确定 -->
 			<view class="cl-cropper__op-item" :class="[pt.opItem?.className]">
-				<cl-icon name="check-line" color="white" :size="50" @tap="toPng"></cl-icon>
+				<cl-icon name="check-line" color="white" :size="25" @tap="toPng"></cl-icon>
 			</view>
 		</view>
 
@@ -138,7 +128,14 @@
 <script setup lang="ts">
 import { computed, ref, reactive, nextTick, getCurrentInstance } from "vue";
 import type { PassThroughProps } from "../../types";
-import { canvasToPng, getDevicePixelRatio, getSafeAreaHeight, parsePt, uuid } from "@/cool";
+import {
+	canvasToPng,
+	getDevicePixelRatio,
+	getSafeAreaHeight,
+	isAppIOS,
+	parsePt,
+	uuid
+} from "@/.cool";
 
 // 定义遮罩层样式类型
 type MaskStyle = {
@@ -327,7 +324,7 @@ const imageStyle = computed(() => {
 	let width = toPixel(imageSize.width);
 
 	// 解决 ios 端高和宽为0时不触发 load 事件
-	if (height == 0) {
+	if (height == 0 && isAppIOS()) {
 		height = 1;
 		width = 1;
 	}

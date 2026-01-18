@@ -1,4 +1,4 @@
-import { getDevicePixelRatio, isEmpty } from "@/cool";
+import { getDevicePixelRatio, isEmpty } from "@/.cool";
 import { getCurrentInstance } from "vue";
 import type {
 	CropImageResult,

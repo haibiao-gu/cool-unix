@@ -50,16 +50,16 @@
 	},
 	"app-harmony": {
 		"distribute": {
-			"bundleName": "com.cool.unix",
+			"bundleName": "cool.unix.demo",
 			"signingConfigs": {
 				"default": {
-					"certpath": "/Users/icssoa/Library/Application Support/HBuilder X/extensions/launcher/agc-certs/1749115146522.cer",
+					"certpath": "/Users/icssoa/Library/Application Support/HBuilder X/extensions/launcher/agc-certs/1761881606984.cer",
 					"keyAlias": "debugKey",
-					"keyPassword": "0000001B0CD2170B509D76F6435F878B7ED2FE2E3EA6E7454E26523487B093238D4F7C8B7033D30DE80163",
-					"profile": "/Users/icssoa/Library/Application Support/HBuilder X/extensions/launcher/agc-certs/1749115146522.p7b",
+					"keyPassword": "0000001B6F06517858019F05761FA6ED2A0253C5F0CC9B6A4283D24BA6EA2EDCA6DDED661284493269A46C",
+					"profile": "/Users/icssoa/Library/Application Support/HBuilder X/extensions/launcher/agc-certs/1768193325463.p7b",
 					"signAlg": "SHA256withECDSA",
-					"storeFile": "/Users/icssoa/Library/Application Support/HBuilder X/extensions/launcher/agc-certs/1749115146522.p12",
-					"storePassword": "0000001B0CD2170B509D76F6435F878B7ED2FE2E3EA6E7454E26523487B093238D4F7C8B7033D30DE80163"
+					"storeFile": "/Users/icssoa/Library/Application Support/HBuilder X/extensions/launcher/agc-certs/1761881606984.p12",
+					"storePassword": "0000001B6F06517858019F05761FA6ED2A0253C5F0CC9B6A4283D24BA6EA2EDCA6DDED661284493269A46C"
 				}
 			},
 			"icons": {
@@ -72,10 +72,10 @@
 		"distribute": {
 			"modules": {},
 			"icons": {
-				"hdpi": "docs/logo.png",
-				"xhdpi": "docs/logo.png",
-				"xxhdpi": "docs/logo.png",
-				"xxxhdpi": "docs/logo.png"
+				"hdpi": "static/logo.png",
+				"xhdpi": "static/logo.png",
+				"xxhdpi": "static/logo.png",
+				"xxxhdpi": "static/logo.png"
 			},
 			"splashScreens": {
 				"default": {}

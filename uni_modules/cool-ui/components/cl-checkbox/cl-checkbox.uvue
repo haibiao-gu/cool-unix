@@ -13,7 +13,7 @@
 		<cl-icon
 			v-if="showIcon"
 			:name="iconName"
-			:size="pt.icon?.size ?? 40"
+			:size="pt.icon?.size ?? 20"
 			:pt="{
 				className: parseClass([
 					'cl-checkbox__icon mr-1',
@@ -26,6 +26,8 @@
 		></cl-icon>
 
 		<cl-text
+			:size="pt.label?.size"
+			:color="pt.label?.color"
 			:pt="{
 				className: parseClass([
 					'cl-checkbox__label',
@@ -44,10 +46,10 @@
 
 <script lang="ts" setup>
 import { computed, useSlots, type PropType } from "vue";
-import type { PassThroughProps } from "../../types";
-import { get, parseClass, parsePt, pull } from "@/cool";
+import { get, parseClass, parsePt, pull } from "@/.cool";
 import type { ClIconProps } from "../cl-icon/props";
 import { useForm } from "../../hooks";
+import type { ClTextProps } from "../cl-text/props";
 
 defineOptions({
 	name: "cl-checkbox"
@@ -109,7 +111,7 @@ const isDisabled = computed(() => props.disabled || disabled.value);
 type PassThrough = {
 	className?: string;
 	icon?: ClIconProps;
-	label?: PassThroughProps;
+	label?: ClTextProps;
 };
 
 // 解析透传样式配置

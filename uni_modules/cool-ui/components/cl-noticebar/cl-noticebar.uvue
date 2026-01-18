@@ -3,7 +3,7 @@
 		class="cl-noticebar"
 		:class="[pt.className]"
 		:style="{
-			height: parseRpx(height!)
+			height: getUnit(height)
 		}"
 	>
 		<view class="cl-noticebar__scroller" :class="[`is-${direction}`]" :style="scrollerStyle">
@@ -12,7 +12,7 @@
 				:key="index"
 				class="cl-noticebar__item"
 				:style="{
-					height: parseRpx(height!)
+					height: getUnit(height!)
 				}"
 			>
 				<slot name="text" :item="item">
@@ -41,7 +41,7 @@ import {
 	watch,
 	nextTick
 } from "vue";
-import { parseRpx, parsePt, parseClass } from "@/cool";
+import { parsePt, parseClass, getUnit } from "@/.cool";
 import type { PassThroughProps } from "../../types";
 
 defineOptions({
@@ -235,6 +235,7 @@ onUnmounted(() => {
 
 <style lang="scss" scoped>
 .cl-noticebar {
+	@apply w-full;
 	flex-shrink: 1;
 
 	&__scroller {

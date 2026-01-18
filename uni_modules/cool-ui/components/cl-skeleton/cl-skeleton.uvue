@@ -18,7 +18,7 @@
 				:pt="{
 					className: '!text-surface-400'
 				}"
-				:size="40"
+				:size="20"
 				v-if="type == 'image'"
 			></cl-icon>
 		</template>
@@ -32,7 +32,7 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, watch, type PropType } from "vue";
 import type { PassThroughProps } from "../../types";
-import { AnimationEngine, createAnimation, isDark, parsePt } from "@/cool";
+import { AnimationEngine, createAnimation, isDark, parsePt } from "@/.cool";
 
 defineOptions({
 	name: "cl-skeleton"
@@ -114,27 +114,28 @@ onMounted(() => {
 		}
 
 		&.cl-skeleton--text {
-			height: 40rpx;
-			width: 300rpx;
+			height: 16px;
+			width: 150px;
+			border-radius: 4px;
 		}
 
 		&.cl-skeleton--image {
 			@apply flex flex-row items-center justify-center;
-			width: 120rpx;
-			height: 120rpx;
-			border-radius: 16rpx;
+			width: 60px;
+			height: 60px;
+			border-radius: 8px;
 		}
 
 		&.cl-skeleton--circle {
 			@apply rounded-full;
-			width: 120rpx;
-			height: 120rpx;
+			width: 60px;
+			height: 60px;
 		}
 
 		&.cl-skeleton--button {
 			@apply rounded-lg;
-			height: 66rpx;
-			width: 150rpx;
+			height: 32px;
+			width: 88px;
 		}
 	}
 }

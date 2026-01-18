@@ -5,10 +5,10 @@
 				<cl-marquee
 					:list="list"
 					direction="horizontal"
-					:item-height="200"
-					:item-width="360"
+					:item-height="100"
+					:item-width="180"
 					:pt="{
-						className: 'h-[200rpx] rounded-xl'
+						className: 'h-[100px] rounded-xl'
 					}"
 				></cl-marquee>
 			</demo-item>
@@ -18,10 +18,10 @@
 					ref="marqueeRef"
 					:list="list"
 					direction="vertical"
-					:item-height="260"
+					:item-height="130"
 					:duration="isSpeed ? 2000 : 5000"
 					:pt="{
-						className: 'h-[500rpx] rounded-xl'
+						className: 'h-[250px] rounded-xl'
 					}"
 				></cl-marquee>
 
@@ -46,7 +46,7 @@
 
 <script lang="ts" setup>
 import DemoItem from "../components/item.uvue";
-import { t } from "@/locale";
+import { t } from "@/.cool";
 import { ref } from "vue";
 
 const marqueeRef = ref<ClMarqueeComponentPublicInstance | null>(null);

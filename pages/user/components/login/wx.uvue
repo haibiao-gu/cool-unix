@@ -7,17 +7,17 @@
 		@close="onEditClose"
 	>
 		<view class="p-4 pt-0">
-			<cl-text color="info" :pt="{ className: 'text-sm' }">
+			<cl-text color="info">
 				{{ t("为提供更好的服务，我们邀请您填写昵称、头像等公开信息") }}
 			</cl-text>
 
 			<view
-				class="flex flex-row justify-between items-center bg-surface-100 rounded-xl p-2 px-3 mt-3 h-[95rpx]"
+				class="flex flex-row justify-between items-center bg-surface-100 rounded-xl p-2 px-3 mt-3 h-[48px]"
 			>
 				<cl-text>{{ t("头像") }}</cl-text>
 
 				<view class="relative">
-					<cl-avatar :size="60" :src="editForm.avatarUrl"></cl-avatar>
+					<cl-avatar :size="30" :src="editForm.avatarUrl"></cl-avatar>
 
 					<button
 						class="absolute top-0 right-0 h-10 w-10 z-10 opacity-0 p-0 m-0"
@@ -28,7 +28,7 @@
 			</view>
 
 			<view
-				class="flex flex-row justify-between items-center bg-surface-100 rounded-xl p-2 px-3 mt-3 h-[95rpx]"
+				class="flex flex-row justify-between items-center bg-surface-100 rounded-xl p-2 px-3 mt-3 h-[48px]"
 			>
 				<cl-text>{{ t("昵称") }}</cl-text>
 
@@ -48,26 +48,12 @@
 			</view>
 
 			<view class="flex flex-row mt-4">
-				<cl-button
-					size="large"
-					text
-					border
-					type="light"
-					:pt="{
-						className: 'flex-1 !rounded-xl h-[80rpx]'
-					}"
-					@tap="editClose"
-					>{{ t("取消") }}</cl-button
-				>
-				<cl-button
-					size="large"
-					:pt="{
-						className: 'flex-1 !rounded-xl h-[80rpx]'
-					}"
-					:loading="editLoading"
-					@tap="editSave"
-					>{{ t("确认") }}</cl-button
-				>
+				<cl-button size="large" text border type="light" fluid @tap="editClose">{{
+					t("取消")
+				}}</cl-button>
+				<cl-button size="large" fluid :loading="editLoading" @tap="editSave">{{
+					t("确认")
+				}}</cl-button>
 			</view>
 		</view>
 	</cl-popup>
@@ -83,9 +69,9 @@ import {
 	useStore,
 	useWx,
 	type Response,
-	type Token
-} from "@/cool";
-import { t } from "@/locale";
+	type Token,
+	t
+} from "@/.cool";
 import { useUi } from "@/uni_modules/cool-ui";
 import { reactive, ref } from "vue";
 

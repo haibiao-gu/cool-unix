@@ -18,7 +18,7 @@
 							className: parseClass([[!backable, 'opacity-50'], pt.back?.className])
 						}"
 						:name="backIcon"
-						:size="pt.back?.size ?? 48"
+						:size="pt.back?.size ?? 24"
 						:color="pt.back?.color ?? color"
 					></cl-icon>
 				</view>
@@ -29,9 +29,10 @@
 			<view class="cl-topbar__content">
 				<slot>
 					<cl-text
+						:size="16"
 						:color="color"
 						:pt="{
-							className: parseClass(['text-md', pt.title?.className])
+							className: parseClass([pt.title?.className])
 						}"
 					>
 						{{ title }}
@@ -48,7 +49,7 @@
 
 <script setup lang="ts">
 import { computed, type PropType } from "vue";
-import { getConfig, getSafeAreaHeight, parseClass, parsePt, parseRpx, router } from "@/cool";
+import { getConfig, getSafeAreaHeight, getUnit, parseClass, parsePt, router } from "@/.cool";
 import type { PassThroughProps } from "../../types";
 import type { ClIconProps } from "../cl-icon/props";
 
@@ -95,7 +96,7 @@ const props = defineProps({
 	// 返回按钮的图标
 	backIcon: {
 		type: String,
-		default: "back"
+		default: "arrow-left-s-line"
 	},
 	// 是否使用安全区域顶部边距
 	safeAreaTop: {
@@ -139,7 +140,7 @@ const height = computed(() => {
 		return "44px";
 	}
 
-	return parseRpx(props.height!);
+	return getUnit(props.height);
 });
 
 // 计算背景颜色，优先级：props > 页面配置 > 全局配置

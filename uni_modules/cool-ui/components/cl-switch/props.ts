@@ -1,11 +1,11 @@
 import type { PassThroughProps } from "../../types";
+import type { ClLoadingProps } from "../cl-loading/props";
 
 export type ClSwitchPassThrough = {
 	className?: string;
 	track?: PassThroughProps;
 	thumb?: PassThroughProps;
-	label?: PassThroughProps;
-	loading?: PassThroughProps;
+	loading?: ClLoadingProps;
 };
 
 export type ClSwitchProps = {

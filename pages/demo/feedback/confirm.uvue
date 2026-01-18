@@ -25,7 +25,7 @@
 </template>
 
 <script lang="ts" setup>
-import { t } from "@/locale";
+import { t } from "@/.cool";
 import DemoItem from "../components/item.uvue";
 import { useUi } from "@/uni_modules/cool-ui";
 
@@ -33,8 +33,8 @@ const ui = useUi();
 
 function openPopup() {
 	ui.showConfirm({
-		title: t("提示"),
-		message: t("确定要删除吗？"),
+		title: t("温馨提示"),
+		message: t("您即将进行一个重要操作，是否确认继续？"),
 		callback(action) {
 			if (action == "confirm") {
 				ui.showToast({
@@ -51,25 +51,25 @@ function openPopup() {
 
 function openPopup2() {
 	ui.showConfirm({
-		title: t("提示"),
-		message: t("确定要删除吗？"),
+		title: t("温馨提示"),
+		message: t("您即将进行一个重要操作，是否确认继续？"),
 		showCancel: false
 	});
 }
 
 function openPopup3() {
 	ui.showConfirm({
-		title: t("提示"),
-		message: t("确定要删除吗？"),
-		cancelText: t("关闭"),
+		title: t("操作确认"),
+		message: t("您确认要执行删除操作吗？删除后将无法恢复。"),
+		cancelText: t("取消"),
 		confirmText: t("下一步")
 	});
 }
 
 function openPopup4() {
 	ui.showConfirm({
-		title: t("提示"),
-		message: t("确定要删除吗？"),
+		title: t("温馨提示"),
+		message: t("您即将进行一个重要操作，是否确认继续？"),
 		beforeClose: (action, { close, showLoading, hideLoading }) => {
 			if (action == "confirm") {
 				showLoading();
@@ -86,8 +86,8 @@ function openPopup4() {
 
 function openPopup5() {
 	ui.showConfirm({
-		title: t("提示"),
-		message: t("确定要删除吗？3秒后自动关闭"),
+		title: t("温馨提示"),
+		message: t("您确定要执行删除操作吗？3秒后自动关闭"),
 		duration: 3000
 	});
 }

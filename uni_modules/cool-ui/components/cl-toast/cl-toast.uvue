@@ -30,7 +30,7 @@
 					<cl-icon
 						color="white"
 						:name="item.icon"
-						:size="56"
+						:size="28"
 						:pt="{
 							className: `mb-1`
 						}"
@@ -53,7 +53,7 @@
 <script setup lang="ts">
 import { reactive, ref } from "vue";
 import type { ClToastOptions } from "../../types";
-import { isDark, isNull } from "@/cool";
+import { isDark, isNull } from "@/.cool";
 
 defineOptions({
 	name: "cl-toast"
@@ -155,13 +155,13 @@ defineExpose({
 <style lang="scss" scoped>
 .cl-toast-wrapper {
 	@apply flex flex-col items-center justify-center;
-	padding: 50rpx 0;
+	padding: 25px 0;
 }
 
 .cl-toast {
-	@apply px-[32rpx] py-[24rpx] rounded-2xl;
+	@apply px-[16px] py-[12px] rounded-xl;
 	background-color: rgba(50, 50, 50, 0.9);
-	max-width: 600rpx;
+	max-width: 300px;
 	opacity: 0;
 
 	&.is-open {

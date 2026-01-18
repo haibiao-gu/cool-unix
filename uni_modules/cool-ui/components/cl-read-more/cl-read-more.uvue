@@ -42,7 +42,7 @@
 				<cl-text
 					color="primary"
 					:pt="{
-						className: 'text-sm mr-1'
+						className: 'mr-1'
 					}"
 				>
 					{{ isExpanded ? collapseText : expandText }}
@@ -55,9 +55,8 @@
 
 <script setup lang="ts">
 import { computed, getCurrentInstance, ref, onMounted, watch, nextTick } from "vue";
-import { getPx, isDark, parsePt } from "@/cool";
+import { isDark, parsePt, t } from "@/.cool";
 import type { PassThroughProps } from "../../types";
-import { t } from "@/locale";
 
 defineOptions({
 	name: "cl-read-more"
@@ -82,8 +81,8 @@ const props = defineProps({
 	},
 	// 收起状态下的最大高度
 	height: {
-		type: [Number, String],
-		default: 80
+		type: Number,
+		default: 40
 	},
 	// 展开文本
 	expandText: {
@@ -159,7 +158,7 @@ const wrapperStyle = computed(() => {
 	const style = {};
 
 	if (isHide.value) {
-		style["height"] = isExpanded.value ? `${contentHeight.value}px` : `${props.height}rpx`;
+		style["height"] = isExpanded.value ? `${contentHeight.value}px` : `${props.height}px`;
 	}
 
 	return style;
@@ -192,7 +191,7 @@ function getContentHeight() {
 				contentHeight.value = (node as NodeInfo).height ?? 0;
 
 				// 实际高度是否大于折叠高度
-				isHide.value = contentHeight.value > getPx(props.height);
+				isHide.value = contentHeight.value > props.height;
 			})
 			.exec();
 	});

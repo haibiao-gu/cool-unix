@@ -3,8 +3,8 @@
 		class="cl-image"
 		:class="[pt.className]"
 		:style="{
-			width: parseRpx(width!),
-			height: parseRpx(height!)
+			width: getUnit(width),
+			height: getUnit(height)
 		}"
 	>
 		<view
@@ -20,7 +20,7 @@
 			<slot name="error">
 				<cl-icon
 					:name="pt.error?.name ?? 'close-line'"
-					:size="pt.error?.size ?? 40"
+					:size="pt.error?.size ?? 20"
 					:pt="{
 						className: parseClass(['!text-surface-400', pt.error?.className])
 					}"
@@ -63,7 +63,7 @@
 <script setup lang="ts">
 import { computed, ref, type PropType } from "vue";
 import type { PassThroughProps } from "../../types";
-import { isDark, isEmpty, parseClass, parsePt, parseRpx } from "@/cool";
+import { isDark, isEmpty, parseClass, parsePt, getUnit } from "@/.cool";
 import type { ClIconProps } from "../cl-icon/props";
 
 defineOptions({
@@ -119,12 +119,12 @@ const props = defineProps({
 	// 图片高度
 	height: {
 		type: [String, Number] as PropType<string | number>,
-		default: 120
+		default: 60
 	},
 	// 图片宽度
 	width: {
 		type: [String, Number] as PropType<string | number>,
-		default: 120
+		default: 60
 	},
 	// 是否显示加载状态
 	showLoading: {

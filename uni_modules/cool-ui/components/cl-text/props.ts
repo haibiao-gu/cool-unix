@@ -9,7 +9,7 @@ export type ClTextProps = {
 	pt?: ClTextPassThrough;
 	value?: string | number | any;
 	color?: string;
-	size?: number | string | any;
+	size?: number;
 	type?: ClTextType;
 	mask?: boolean;
 	currency?: string;

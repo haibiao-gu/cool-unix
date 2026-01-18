@@ -6,23 +6,17 @@
 	<!-- #endif -->
 
 	<!-- 小程序平台：使用 image 标签显示 SVG -->
-	<!-- #ifdef MP || APP-HARMONY -->
+	<!-- #ifdef MP || APP-HARMONY || H5 -->
 	<!-- @vue-ignore -->
 	<image class="cl-svg" :src="svgSrc"></image>
-	<!-- #endif -->
-
-	<!-- Web 平台：使用 object 标签以支持 SVG 交互和样式控制 -->
-	<!-- #ifdef WEB -->
-	<object :id="svgId" :data="svgSrc" type="image/svg+xml" class="cl-svg"></object>
 	<!-- #endif -->
 </template>
 
 <script lang="ts" setup>
 import { computed, watch, onMounted } from "vue";
-import { getColor, isDark } from "@/cool";
+import { getColor, isDark } from "@/.cool";
 
 // #ifdef APP-ANDROID || APP-IOS
-// @ts-ignore
 import { CoolSvg } from "@/uni_modules/cool-svg";
 // #endif
 
@@ -43,6 +37,7 @@ const props = defineProps({
 	 * SVG 填充颜色
 	 * 支持格式：#hex、rgb()、rgba()、颜色名称
 	 * 会自动替换 SVG 中 path 元素的 fill 属性
+	 * 温馨提示：建议优先在 SVG 文件中直接设置所需颜色值，因为不同平台对 SVG 颜色渲染的兼容性存在差异，统一性无法完全保证。
 	 */
 	color: {
 		type: String,

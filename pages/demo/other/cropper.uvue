@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts" setup>
-import { t } from "@/locale";
+import { t } from "@/.cool";
 import DemoItem from "../components/item.uvue";
 import { ref } from "vue";
 

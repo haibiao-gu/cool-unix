@@ -1,3 +1,11 @@
+// 全局配置类型
+export type Config = {
+	fontSize: number | null;
+	zIndex: number;
+	startDate: string;
+	endDate: string;
+};
+
 // 尺寸类型，控件大小
 export type Size = "small" | "normal" | "large";
 
@@ -294,12 +302,20 @@ export type ClSelectSeatItem = {
 	selectedColor?: string; // 选中图标颜色
 	selectedIcon?: string; // 选中图标名称
 	icon?: string; // 图标名称
-	image?: string; // 默认图片（小程序平台字体渲染兼容）
-	selectedImage?: string; // 选中图片（小程序平台字体渲染兼容）
+	image?: string; // 默认图片
+	selectedImage?: string; // 选中图片
 };
 
 // 选中座位的值
 export type ClSelectSeatValue = {
 	row: number; // 行号
 	col: number; // 列号
+};
+
+// tabbar 项类型
+export type ClTabbarItem = {
+	icon?: string;
+	selectedIcon?: string;
+	value: string;
+	text?: string;
 };

@@ -21,7 +21,7 @@
 			<cl-rolling-number
 				:value="value"
 				:pt="{
-					className: parseClass(['w-[100rpx] text-center', pt.text?.className])
+					className: parseClass(['w-[50px] text-center', pt.text?.className])
 				}"
 				unit="%"
 				v-if="showText"
@@ -33,7 +33,7 @@
 
 <script lang="ts" setup>
 import { computed, getCurrentInstance, onMounted, ref, watch } from "vue";
-import { isDark, parseClass, parsePt, parseRpx } from "@/cool";
+import { isDark, parseClass, parsePt, getUnit } from "@/.cool";
 import type { PassThroughProps } from "../../types";
 
 defineOptions({
@@ -54,7 +54,7 @@ const props = defineProps({
 	// 线条宽度
 	strokeWidth: {
 		type: Number,
-		default: 12
+		default: 6
 	},
 	// 是否显示文本
 	showText: {
@@ -96,7 +96,7 @@ const width = ref(0);
 const outerStyle = computed(() => {
 	const style = {};
 
-	style["height"] = parseRpx(props.strokeWidth);
+	style["height"] = getUnit(props.strokeWidth);
 
 	if (props.unColor != null) {
 		style["backgroundColor"] = props.unColor!;

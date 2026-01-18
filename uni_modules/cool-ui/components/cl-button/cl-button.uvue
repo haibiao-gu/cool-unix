@@ -12,7 +12,8 @@
 				'cl-button--rounded': rounded,
 				'cl-button--icon': isIcon,
 				'cl-button--hover': isHover,
-				'is-dark': isDark
+				'is-dark': isDark,
+				'is-fluid': fluid
 			},
 			isHover ? hoverClass : '',
 			pt.className
@@ -65,7 +66,7 @@
 			:color="loadingIcon.color"
 			:size="loadingIcon.size"
 			:pt="{
-				className: parseClass(['mr-[10rpx]', pt.loading?.className])
+				className: parseClass(['mr-1', pt.loading?.className])
 			}"
 			v-if="loading && !disabled"
 		></cl-loading>
@@ -87,15 +88,10 @@
 
 		<template v-if="!isIcon">
 			<cl-text
-				:color="textColor"
+				:size="pt.label?.size ?? textSize"
+				:color="pt.label?.color ?? textColor"
 				:pt="{
-					className: parseClass([
-						'cl-button__label',
-						{
-							'text-sm': size == 'small'
-						},
-						pt.label?.className
-					])
+					className: parseClass(['cl-button__label', pt.label?.className])
 				}"
 			>
 				<slot></slot>
@@ -108,10 +104,11 @@
 
 <script setup lang="ts">
 import { computed, ref, useSlots, type PropType } from "vue";
-import { get, isDark, parseClass, parsePt, useCache } from "@/cool";
+import { get, isDark, parseClass, parsePt, useCache } from "@/.cool";
 import type { ClIconProps } from "../cl-icon/props";
-import type { ClButtonType, PassThroughProps, Size } from "../../types";
+import type { ClButtonType, Size } from "../../types";
 import type { ClLoadingProps } from "../cl-loading/props";
+import type { ClTextProps } from "../cl-text/props";
 
 defineOptions({
 	name: "cl-button"
@@ -288,6 +285,11 @@ const props = defineProps({
 	createliveactivity: {
 		type: Boolean,
 		default: false
+	},
+	// 是否为 flex-1 布局
+	fluid: {
+		type: Boolean,
+		default: false
 	}
 });
 
@@ -323,7 +325,7 @@ const { cache } = useCache(() => [
 // 样式穿透类型
 type PassThrough = {
 	className?: string;
-	label?: PassThroughProps;
+	label?: ClTextProps;
 	icon?: ClIconProps;
 	loading?: ClLoadingProps;
 };
@@ -359,57 +361,43 @@ const textColor = computed(() => {
 	return color;
 });
 
-// 图标信息
-const leftIcon = computed<ClIconProps>(() => {
-	let color = textColor.value;
-	let size: number | string;
-
+// 文本大小
+const textSize = computed<number>(() => {
 	switch (props.size) {
 		case "small":
-			size = 26;
-			break;
+			return 12;
 		default:
-			size = 32;
-			break;
+			return 14;
 	}
+});
 
+// 图标大小
+const iconSize = computed<number>(() => {
+	switch (props.size) {
+		case "small":
+			return 12;
+		default:
+			return 16;
+	}
+});
+
+// 图标信息
+const leftIcon = computed<ClIconProps>(() => {
 	const ptIcon = pt.value.icon;
 
-	if (ptIcon != null) {
-		color = ptIcon.color ?? color;
-		size = ptIcon.size ?? size;
-	}
-
 	return {
-		size,
-		color
+		size: ptIcon?.size ?? iconSize.value,
+		color: ptIcon?.color ?? textColor.value
 	};
 });
 
 // 加载图标信息
 const loadingIcon = computed<ClLoadingProps>(() => {
-	let color = textColor.value;
-	let size: number | string;
-
-	switch (props.size) {
-		case "small":
-			size = 22;
-			break;
-		default:
-			size = 24;
-			break;
-	}
-
 	const ptIcon = pt.value.loading;
 
-	if (ptIcon != null) {
-		color = ptIcon.color ?? color;
-		size = ptIcon.size ?? size;
-	}
-
 	return {
-		size,
-		color
+		size: ptIcon?.size ?? textSize.value,
+		color: ptIcon?.color ?? textColor.value
 	};
 });
 
@@ -542,29 +530,35 @@ function onTouchCancel() {
 	}
 
 	&--small {
-		padding: 6rpx 14rpx;
-		border-radius: 12rpx;
+		height: 24px;
+		padding: 0 11px;
+		border-radius: 6px;
 
 		&.cl-button--icon {
-			padding: 10rpx;
+			padding: 0;
+			width: 24px;
 		}
 	}
 
 	&--normal {
-		padding: 10rpx 28rpx;
-		border-radius: 16rpx;
+		height: 32px;
+		padding: 0 15px;
+		border-radius: 8px;
 
 		&.cl-button--icon {
-			padding: 14rpx;
+			padding: 0;
+			width: 32px;
 		}
 	}
 
 	&--large {
-		padding: 14rpx 32rpx;
-		border-radius: 20rpx;
+		height: 40px;
+		padding: 0 19px;
+		border-radius: 10px;
 
 		&.cl-button--icon {
-			padding: 18rpx;
+			padding: 0;
+			width: 40px;
 		}
 	}
 
@@ -633,7 +627,7 @@ function onTouchCancel() {
 	}
 
 	&--light {
-		@apply border-surface-700;
+		@apply border-surface-700 bg-transparent;
 
 		&.cl-button--hover {
 			@apply bg-surface-100;
@@ -690,6 +684,10 @@ function onTouchCancel() {
 		&.cl-button--hover {
 			@apply bg-transparent opacity-50;
 		}
+	}
+
+	&.is-fluid {
+		@apply flex-1;
 	}
 }
 

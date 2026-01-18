@@ -3,7 +3,7 @@
 		class="cl-waterfall"
 		:class="[pt.className]"
 		:style="{
-			padding: `0 ${props.gutter / 2}rpx`
+			padding: `0 ${props.gutter / 2}px`
 		}"
 	>
 		<view
@@ -11,7 +11,7 @@
 			v-for="(column, columnIndex) in columns"
 			:key="columnIndex"
 			:style="{
-				margin: `0 ${props.gutter / 2}rpx`
+				margin: `0 ${props.gutter / 2}px`
 			}"
 		>
 			<view class="cl-waterfall__column-inner">
@@ -31,9 +31,9 @@
 </template>
 
 <script setup lang="ts">
-import { assign, isNull } from "@/cool";
+import { assign, isNull } from "@/.cool";
 import { computed, getCurrentInstance, nextTick, onMounted, ref, watch } from "vue";
-import { parsePt } from "@/cool";
+import { parsePt } from "@/.cool";
 
 defineOptions({
 	name: "cl-waterfall"
@@ -56,10 +56,10 @@ const props = defineProps({
 		type: Number,
 		default: 2
 	},
-	// 列间距，单位为rpx，默认为12
+	// 列间距，单位为px
 	gutter: {
 		type: Number,
-		default: 12
+		default: 8
 	},
 	// 数据项的唯一标识字段名，默认为"id"
 	nodeKey: {

@@ -30,21 +30,13 @@
 					text
 					border
 					type="light"
-					:pt="{
-						className: 'flex-1 !rounded-xl h-[80rpx]'
-					}"
+					fluid
 					@tap="close"
 					>{{ cancelText }}</cl-button
 				>
-				<cl-button
-					v-if="showConfirm"
-					size="large"
-					:pt="{
-						className: 'flex-1 !rounded-xl h-[80rpx]'
-					}"
-					@tap="confirm"
-					>{{ confirmText }}</cl-button
-				>
+				<cl-button v-if="showConfirm" size="large" fluid @tap="confirm">{{
+					confirmText
+				}}</cl-button>
 			</view>
 		</view>
 	</cl-popup>
@@ -53,10 +45,9 @@
 <script setup lang="ts">
 import { ref, computed, type PropType, watch } from "vue";
 import type { ClSelectOption } from "../../types";
-import { isEmpty, isNull, parsePt, parseToObject } from "@/cool";
+import { isEmpty, isNull, parsePt, parseToObject, t } from "@/.cool";
 import type { ClSelectTriggerPassThrough } from "../cl-select-trigger/props";
 import type { ClPopupPassThrough } from "../cl-popup/props";
-import { t } from "@/locale";
 
 defineOptions({
 	name: "cl-select-time"
@@ -380,7 +371,7 @@ defineExpose({
 	&-popup {
 		&__op {
 			@apply flex flex-row items-center justify-center;
-			padding: 24rpx;
+			padding: 12px;
 		}
 	}
 }

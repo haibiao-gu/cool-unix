@@ -58,15 +58,6 @@
 					"meta": {
 						"isAuth": true
 					}
-				},
-				{
-					"path": "cs",
-					"style": {
-						"navigationBarTitleText": "联系客服"
-					},
-					"meta": {
-						"isAuth": true
-					}
 				}
 			]
 		},
@@ -284,6 +275,12 @@
 					"path": "layout/footer",
 					"style": {
 						"navigationBarTitleText": "Footer 底部视图"
+					}
+				},
+				{
+					"path": "layout/tabbar",
+					"style": {
+						"navigationBarTitleText": "Tabbar 底部导航栏"
 					}
 				},
 				{
@@ -550,8 +547,7 @@
 				{
 					"path": "shop/address",
 					"style": {
-						"navigationBarTitleText": "收货地址",
-						"enablePullDownRefresh": true
+						"navigationBarTitleText": "收货地址"
 					},
 					"meta": {
 						"isAuth": true

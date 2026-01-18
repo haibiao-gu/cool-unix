@@ -1,4 +1,4 @@
-import type { ClActionSheetItem, ClActionSheetOptions, PassThroughProps, Type, ClButtonType, Size, ClCalendarDateConfig, ClCalendarMode, ClListViewItem, ClFilterItemType, ClSelectOption, ClFormLabelPosition, ClFormRule, ClFormValidateError, ClInputType, ClListItem, Justify, ClListViewGroup, ClListViewVirtualItem, ClListViewRefresherStatus, ClPopupDirection, ClQrcodeMode, ClSelectValue, ClSelectDateShortcut, ClTabsItem, ClTextType, ClToastOptions, ClTreeItem, ClTreeNodeInfo, ClUploadItem } from "./types";
+import type { ClActionSheetItem, ClActionSheetOptions, PassThroughProps, Type, ClButtonType, Size, ClCalendarDateConfig, ClCalendarMode, ClListViewItem, ClFilterItemType, ClSelectOption, ClFormLabelPosition, ClFormRule, ClFormValidateError, ClInputType, ClListItem, Justify, ClListViewGroup, ClListViewVirtualItem, ClListViewRefresherStatus, ClPopupDirection, ClQrcodeMode, ClSelectValue, ClSelectDateShortcut, ClSelectSeatItem, ClSelectSeatValue, ClTabbarItem, ClTabsItem, ClTextType, ClToastOptions, ClTreeItem, ClTreeNodeInfo, ClUploadItem } from "./types";
 import { type QrcodeOptions } from "./draw";
 
 import type { ClActionSheetProps, ClActionSheetPassThrough } from "./components/cl-action-sheet/props";
@@ -52,6 +52,7 @@ import type { ClRowProps, ClRowPassThrough } from "./components/cl-row/props";
 import type { ClSafeAreaProps, ClSafeAreaPassThrough } from "./components/cl-safe-area/props";
 import type { ClSelectProps, ClSelectPassThrough } from "./components/cl-select/props";
 import type { ClSelectDateProps, ClSelectDatePassThrough } from "./components/cl-select-date/props";
+import type { ClSelectSeatProps } from "./components/cl-select-seat/props";
 import type { ClSelectTimeProps, ClSelectTimePassThrough } from "./components/cl-select-time/props";
 import type { ClSelectTriggerProps, ClSelectTriggerPassThrough } from "./components/cl-select-trigger/props";
 import type { ClSignProps, ClSignPassThrough } from "./components/cl-sign/props";
@@ -60,6 +61,7 @@ import type { ClSlideVerifyProps, ClSlideVerifyPassThrough } from "./components/
 import type { ClSliderProps, ClSliderPassThrough } from "./components/cl-slider/props";
 import type { ClStickyProps } from "./components/cl-sticky/props";
 import type { ClSwitchProps, ClSwitchPassThrough } from "./components/cl-switch/props";
+import type { ClTabbarProps, ClTabbarPassThrough } from "./components/cl-tabbar/props";
 import type { ClTabsProps, ClTabsPassThrough } from "./components/cl-tabs/props";
 import type { ClTagProps, ClTagPassThrough } from "./components/cl-tag/props";
 import type { ClTextProps, ClTextPassThrough } from "./components/cl-text/props";
@@ -130,6 +132,7 @@ declare module "vue" {
 		"cl-safe-area": (typeof import('./components/cl-safe-area/cl-safe-area.uvue')['default']) & import('vue').DefineComponent<ClSafeAreaProps>;
 		"cl-select": (typeof import('./components/cl-select/cl-select.uvue')['default']) & import('vue').DefineComponent<ClSelectProps>;
 		"cl-select-date": (typeof import('./components/cl-select-date/cl-select-date.uvue')['default']) & import('vue').DefineComponent<ClSelectDateProps>;
+		"cl-select-seat": (typeof import('./components/cl-select-seat/cl-select-seat.uvue')['default']) & import('vue').DefineComponent<ClSelectSeatProps>;
 		"cl-select-time": (typeof import('./components/cl-select-time/cl-select-time.uvue')['default']) & import('vue').DefineComponent<ClSelectTimeProps>;
 		"cl-select-trigger": (typeof import('./components/cl-select-trigger/cl-select-trigger.uvue')['default']) & import('vue').DefineComponent<ClSelectTriggerProps>;
 		"cl-sign": (typeof import('./components/cl-sign/cl-sign.uvue')['default']) & import('vue').DefineComponent<ClSignProps>;
@@ -138,6 +141,7 @@ declare module "vue" {
 		"cl-slider": (typeof import('./components/cl-slider/cl-slider.uvue')['default']) & import('vue').DefineComponent<ClSliderProps>;
 		"cl-sticky": (typeof import('./components/cl-sticky/cl-sticky.uvue')['default']) & import('vue').DefineComponent<ClStickyProps>;
 		"cl-switch": (typeof import('./components/cl-switch/cl-switch.uvue')['default']) & import('vue').DefineComponent<ClSwitchProps>;
+		"cl-tabbar": (typeof import('./components/cl-tabbar/cl-tabbar.uvue')['default']) & import('vue').DefineComponent<ClTabbarProps>;
 		"cl-tabs": (typeof import('./components/cl-tabs/cl-tabs.uvue')['default']) & import('vue').DefineComponent<ClTabsProps>;
 		"cl-tag": (typeof import('./components/cl-tag/cl-tag.uvue')['default']) & import('vue').DefineComponent<ClTagProps>;
 		"cl-text": (typeof import('./components/cl-text/cl-text.uvue')['default']) & import('vue').DefineComponent<ClTextProps>;

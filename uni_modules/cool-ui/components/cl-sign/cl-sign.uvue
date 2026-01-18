@@ -5,8 +5,8 @@
 			ref="canvasRef"
 			:id="canvasId"
 			:style="{
-				height: `${height}px`,
-				width: `${width}px`
+				height: getUnit(height),
+				width: getUnit(width)
 			}"
 			@touchstart="onTouchStart"
 			@touchmove.stop.prevent="onTouchMove"
@@ -16,7 +16,7 @@
 </template>
 
 <script lang="ts" setup>
-import { canvasToPng, getDevicePixelRatio, parsePt, uuid } from "@/cool";
+import { canvasToPng, getDevicePixelRatio, parsePt, uuid, getUnit } from "@/.cool";
 import { computed, getCurrentInstance, nextTick, onMounted, ref, shallowRef, watch } from "vue";
 
 defineOptions({

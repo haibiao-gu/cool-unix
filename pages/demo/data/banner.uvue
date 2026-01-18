@@ -13,9 +13,9 @@
 				<cl-banner
 					:list="list"
 					:pt="{
-						className: 'mx-[-12rpx] !rounded-none',
+						className: 'mx-[-6px] !rounded-none',
 						item: {
-							className: parseClass(['scale-y-80 !px-[12rpx]'])
+							className: parseClass(['scale-y-80 !px-[6px]'])
 						},
 						itemActive: {
 							className: parseClass(['!scale-y-100'])
@@ -33,9 +33,9 @@
 				<cl-banner
 					:list="list"
 					:pt="{
-						className: 'mx-[-12rpx]',
+						className: 'mx-[-6px]',
 						item: {
-							className: parseClass(['px-[12rpx]'])
+							className: parseClass(['px-[6px]'])
 						}
 					}"
 					:next-margin="40"
@@ -46,10 +46,9 @@
 </template>
 
 <script lang="ts" setup>
-import { t } from "@/locale";
 import DemoItem from "../components/item.uvue";
 import { ref } from "vue";
-import { parseClass } from "@/cool";
+import { parseClass, t } from "@/.cool";
 
 const list = ref<string[]>([
 	"https://unix.cool-js.com/images/demo/bg1.png",

@@ -6,12 +6,7 @@
 
 				<cl-list border class="mt-3">
 					<view class="w-full p-2">
-						<cl-tabs
-							v-model="direction"
-							:list="directionList"
-							show-slider
-							:height="66"
-						></cl-tabs>
+						<cl-tabs v-model="direction" :list="directionList" show-slider></cl-tabs>
 					</view>
 
 					<cl-list-item :label="t('设置宽度 80%')">
@@ -66,11 +61,10 @@
 </template>
 
 <script lang="ts" setup>
-import { t } from "@/locale";
 import DemoItem from "../components/item.uvue";
 import { computed, ref } from "vue";
 import type { ClPopupDirection, ClTabsItem } from "@/uni_modules/cool-ui";
-import { parseClass } from "@/cool";
+import { parseClass, t } from "@/.cool";
 
 const visible = ref(false);
 const isWidth = ref(true);

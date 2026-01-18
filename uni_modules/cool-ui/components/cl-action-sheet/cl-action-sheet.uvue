@@ -17,7 +17,7 @@
 			<view class="cl-action-sheet__description" v-if="config.description != ''">
 				<cl-text
 					:pt="{
-						className: 'text-surface-400 text-md text-center'
+						className: 'text-surface-400 text-center'
 					}"
 					>{{ config.description }}</cl-text
 				>
@@ -37,8 +37,9 @@
 						<cl-icon
 							:name="item.icon"
 							:pt="{
-								className: 'mr-2'
+								className: parseClass(['mr-1', pt.icon?.className])
 							}"
+							:size="pt.icon?.size"
 							:color="item.color"
 							v-if="item.icon != null"
 						></cl-icon>
@@ -55,8 +56,8 @@
 <script setup lang="ts">
 import { ref, reactive, computed } from "vue";
 import type { ClActionSheetItem, ClActionSheetOptions, PassThroughProps } from "../../types";
-import { t } from "@/locale";
-import { isDark, parseClass, parsePt } from "@/cool";
+import { isDark, parseClass, parsePt, t } from "@/.cool";
+import type { ClIconProps } from "../cl-icon/props";
 
 defineOptions({
 	name: "cl-action-sheet"
@@ -82,6 +83,7 @@ type PassThrough = {
 	className?: string; // 根元素类名
 	item?: PassThroughProps; // 列表项样式
 	list?: PassThroughProps; // 列表样式
+	icon?: ClIconProps; // 图标样式
 };
 
 // 解析透传样式配置
@@ -163,17 +165,17 @@ defineExpose({
 .cl-action-sheet {
 	&__description {
 		@apply flex flex-row items-center justify-center;
-		margin-bottom: 30rpx;
+		margin-bottom: 15px;
 	}
 
 	&__list {
-		padding: 0 20rpx;
+		padding: 0 10px;
 	}
 
 	&__item {
 		@apply flex flex-row items-center justify-center rounded-lg;
-		padding: 20rpx;
-		margin-bottom: 20rpx;
+		padding: 10px;
+		margin-bottom: 10px;
 	}
 }
 </style>

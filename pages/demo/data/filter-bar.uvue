@@ -10,7 +10,7 @@
 						:value="1"
 						:options="coreOptions"
 						:pt="{
-							className: 'w-[220rpx] !flex-none'
+							className: 'w-[110px] !flex-none'
 						}"
 						@change="onOptionsChange"
 					></cl-filter-item>
@@ -43,13 +43,13 @@
 			</demo-item>
 
 			<demo-item>
-				<cl-text pre-wrap :pt="{ className: 'text-sm p-2' }">{{
+				<cl-text pre-wrap :pt="{ className: 'p-2' }">{{
 					JSON.stringify(filterForm, null, 4)
 				}}</cl-text>
 			</demo-item>
 
 			<demo-item>
-				<cl-text pre-wrap :pt="{ className: 'text-sm p-2' }">{{
+				<cl-text pre-wrap :pt="{ className: 'p-2' }">{{
 					JSON.stringify(searchForm, null, 4)
 				}}</cl-text>
 			</demo-item>
@@ -82,10 +82,7 @@
 													searchForm.dis.includes(item.value),
 													`${isDark ? '!bg-surface-700' : '!bg-white'} !border-primary-500`
 												]
-											]),
-											label: {
-												className: 'text-sm'
-											}
+											])
 										}"
 									></cl-checkbox>
 								</cl-col>
@@ -145,10 +142,7 @@
 													searchForm.brand.includes(item.value),
 													`${isDark ? '!bg-surface-700' : '!bg-white'} !border-primary-500`
 												]
-											]),
-											label: {
-												className: 'text-sm'
-											}
+											])
 										}"
 									></cl-checkbox>
 								</cl-col>
@@ -175,10 +169,7 @@
 													searchForm.memory == item.value,
 													`${isDark ? '!bg-surface-700' : '!bg-white'} !border-primary-500`
 												]
-											]),
-											label: {
-												className: 'text-sm'
-											}
+											])
 										}"
 									></cl-radio>
 								</cl-col>
@@ -205,10 +196,7 @@
 													searchForm.color == item.value,
 													`${isDark ? '!bg-surface-700' : '!bg-white'} !border-primary-500`
 												]
-											]),
-											label: {
-												className: 'text-sm'
-											}
+											])
 										}"
 									></cl-radio>
 								</cl-col>
@@ -218,23 +206,10 @@
 				</scroll-view>
 
 				<view class="flex flex-row p-3">
-					<cl-button
-						type="info"
-						text
-						border
-						:pt="{
-							className: 'flex-1'
-						}"
-						@tap="closeFilter"
-						>{{ t("取消") }}</cl-button
-					>
-					<cl-button
-						:pt="{
-							className: 'flex-1'
-						}"
-						@tap="submit"
-						>{{ t("确定") }}</cl-button
-					>
+					<cl-button size="large" type="info" text border fluid @tap="closeFilter">{{
+						t("取消")
+					}}</cl-button>
+					<cl-button size="large" fluid @tap="submit">{{ t("确定") }}</cl-button>
 				</view>
 
 				<cl-safe-area type="bottom"></cl-safe-area>
@@ -244,11 +219,10 @@
 </template>
 
 <script lang="ts" setup>
-import { t } from "@/locale";
 import DemoItem from "../components/item.uvue";
 import { reactive, ref } from "vue";
 import { useUi, type ClSelectOption } from "@/uni_modules/cool-ui";
-import { isDark, parseClass } from "@/cool";
+import { isDark, parseClass, t } from "@/.cool";
 
 const ui = useUi();
 

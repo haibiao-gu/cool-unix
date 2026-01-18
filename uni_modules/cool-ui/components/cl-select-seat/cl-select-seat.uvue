@@ -15,13 +15,7 @@
 					marginTop: i == 1 ? 0 : seatGap * scale + 'px'
 				}"
 			>
-				<cl-text
-					color="white"
-					:pt="{
-						className: 'text-xs'
-					}"
-					>{{ i }}</cl-text
-				>
+				<cl-text color="white" :size="10">{{ i }}</cl-text>
 			</view>
 		</view>
 
@@ -36,7 +30,7 @@
 </template>
 
 <script setup lang="ts">
-import { assign, getColor, getDevicePixelRatio, isDark, isH5, isMp } from "@/cool";
+import { assign, getColor, getDevicePixelRatio, isDark, isH5 } from "@/.cool";
 import { computed, getCurrentInstance, onMounted, ref, watch } from "vue";
 import { getIcon } from "../cl-icon/utils";
 import type { PropType } from "vue";
@@ -259,9 +253,6 @@ function loadImage(src: string): Promise<Image> {
 			imageCache.set(src, img);
 			resolve(img);
 		};
-		img.onerror = () => {
-			reject(new Error("Image load failed"));
-		};
 	});
 }
 
@@ -370,7 +361,14 @@ function drawSeat(seat: ClSelectSeatItem) {
 		if (selectedImageSrc != "" && imageCache.has(selectedImageSrc)) {
 			// 使用圆角裁剪绘制图片
 			renderingContext!.save();
-			drawRoundRect(renderingContext!, x, y, seatSize.value, seatSize.value, props.borderRadius);
+			drawRoundRect(
+				renderingContext!,
+				x,
+				y,
+				seatSize.value,
+				seatSize.value,
+				props.borderRadius
+			);
 			renderingContext!.clip();
 			const img = imageCache.get(selectedImageSrc)!;
 			renderingContext!.drawImage(img, x, y, seatSize.value, seatSize.value);
@@ -378,7 +376,14 @@ function drawSeat(seat: ClSelectSeatItem) {
 		} else {
 			// 绘制选中背景
 			renderingContext!.fillStyle = seat.selectedBgColor ?? props.selectedBgColor;
-			drawRoundRect(renderingContext!, x, y, seatSize.value, seatSize.value, props.borderRadius);
+			drawRoundRect(
+				renderingContext!,
+				x,
+				y,
+				seatSize.value,
+				seatSize.value,
+				props.borderRadius
+			);
 			renderingContext!.fill();
 
 			// 绘制选中图标
@@ -397,7 +402,14 @@ function drawSeat(seat: ClSelectSeatItem) {
 		if (imageSrc != "" && imageCache.has(imageSrc)) {
 			// 使用圆角裁剪绘制图片
 			renderingContext!.save();
-			drawRoundRect(renderingContext!, x, y, seatSize.value, seatSize.value, props.borderRadius);
+			drawRoundRect(
+				renderingContext!,
+				x,
+				y,
+				seatSize.value,
+				seatSize.value,
+				props.borderRadius
+			);
 			renderingContext!.clip();
 			const img = imageCache.get(imageSrc)!;
 			renderingContext!.drawImage(img, x, y, seatSize.value, seatSize.value);
@@ -406,14 +418,28 @@ function drawSeat(seat: ClSelectSeatItem) {
 			// 绘制未选中背景
 			const bgColor = seat.bgColor ?? (isDark.value ? props.darkBgColor : props.bgColor);
 			renderingContext!.fillStyle = bgColor;
-			drawRoundRect(renderingContext!, x, y, seatSize.value, seatSize.value, props.borderRadius);
+			drawRoundRect(
+				renderingContext!,
+				x,
+				y,
+				seatSize.value,
+				seatSize.value,
+				props.borderRadius
+			);
 			renderingContext!.fill();
 
 			// 绘制边框
 			renderingContext!.strokeStyle =
 				seat.borderColor ?? (isDark.value ? props.darkBorderColor : props.borderColor);
 			renderingContext!.lineWidth = props.borderWidth;
-			drawRoundRect(renderingContext!, x, y, seatSize.value, seatSize.value, props.borderRadius);
+			drawRoundRect(
+				renderingContext!,
+				x,
+				y,
+				seatSize.value,
+				seatSize.value,
+				props.borderRadius
+			);
 			renderingContext!.stroke();
 
 			// 绘制默认图标
@@ -751,7 +777,7 @@ defineExpose({
 
 		&-item {
 			@apply flex flex-col items-center justify-center;
-			width: 36rpx;
+			width: 14px;
 		}
 	}
 }

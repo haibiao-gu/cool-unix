@@ -34,6 +34,7 @@
 				<cl-calendar
 					v-model:date="dateRange2"
 					mode="range"
+					:year="2025"
 					:month="10"
 					:show-header="isShowHeader"
 					:show-weeks="isShowWeeks"
@@ -68,9 +69,8 @@
 
 <script lang="ts" setup>
 import { computed, ref } from "vue";
-import { t } from "@/locale";
 import DemoItem from "../components/item.uvue";
-import { dayUts, first, last } from "@/cool";
+import { dayUts, first, last, t } from "@/.cool";
 import type { ClCalendarDateConfig } from "@/uni_modules/cool-ui";
 
 const date = ref<string | null>(dayUts().format("YYYY-MM-DD"));

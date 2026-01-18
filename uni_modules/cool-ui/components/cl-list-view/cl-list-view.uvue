@@ -42,7 +42,6 @@
 				<slot name="refresher" :status="refresherStatus" :text="refresherText">
 					<cl-loading
 						v-if="refresherStatus === 'refreshing'"
-						:size="28"
 						:pt="{
 							className: 'mr-2'
 						}"
@@ -167,8 +166,7 @@ import type {
 	PassThroughProps,
 	ClListViewRefresherStatus
 } from "../../types";
-import { isApp, isDark, isEmpty, parseClass, parsePt } from "@/cool";
-import { t } from "@/locale";
+import { isApp, isDark, isEmpty, parseClass, parsePt, t } from "@/.cool";
 
 defineOptions({
 	name: "cl-list-view"
@@ -731,7 +729,7 @@ defineExpose({
 
 	&__index {
 		@apply flex flex-row items-center bg-white;
-		@apply absolute top-0 left-0 w-full px-[20rpx] z-20;
+		@apply absolute top-0 left-0 w-full px-[10px] z-20;
 
 		&.is-dark {
 			@apply bg-surface-600 border-none;
@@ -743,12 +741,12 @@ defineExpose({
 	}
 
 	&__header {
-		@apply flex flex-row items-center relative px-[20rpx] z-10;
+		@apply flex flex-row items-center relative px-[10px] z-10;
 	}
 
 	&__item {
 		&-inner {
-			@apply flex flex-row items-center px-[20rpx] h-full;
+			@apply flex flex-row items-center px-[10px] h-full;
 		}
 	}
 

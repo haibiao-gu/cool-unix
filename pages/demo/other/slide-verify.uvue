@@ -26,7 +26,7 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import DemoItem from "../components/item.uvue";
-import { t } from "@/locale";
+import { t } from "@/.cool";
 import { useUi } from "@/uni_modules/cool-ui";
 
 const ui = useUi();

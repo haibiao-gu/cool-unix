@@ -11,7 +11,7 @@
 					:disabled="isDisabled"
 					:show-score="isShowScore"
 					:allow-half="isAllowHalf"
-					:size="isSize ? 50 : 40"
+					:size="isSize ? 24 : 20"
 					:void-icon="isIcon ? 'heart-fill' : 'star-fill'"
 					:icon="isIcon ? 'heart-fill' : 'star-fill'"
 				></cl-rate>
@@ -50,7 +50,7 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import DemoItem from "../components/item.uvue";
-import { t } from "@/locale";
+import { t } from "@/.cool";
 
 const num = ref(1);
 const num2 = ref(3.5);

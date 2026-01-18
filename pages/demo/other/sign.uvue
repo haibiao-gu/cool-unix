@@ -22,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-import { t } from "@/locale";
+import { t } from "@/.cool";
 import { ref } from "vue";
 
 const height = ref(200);

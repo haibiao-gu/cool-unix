@@ -1,8 +1,8 @@
 <template>
 	<view class="flex flex-col mb-5">
-		<cl-text :pt="{ className: 'text-lg font-bold' }">{{ t("手机登录") }}</cl-text>
-		<cl-text :pt="{ className: 'text-sm mt-2' }" color="info">{{
-			t("未注册的手机号登录成功后将自动注册")
+		<cl-text :size="18" :pt="{ className: 'font-bold' }">{{ t("您好，欢迎登录！") }}</cl-text>
+		<cl-text :pt="{ className: 'mt-2' }" color="info">{{
+			t("首次登录将自动为您完成注册")
 		}}</cl-text>
 	</view>
 
@@ -15,7 +15,7 @@
 				:border="false"
 				:pt="{
 					className: parseClass([
-						'!h-[90rpx] flex-1 !rounded-xl !px-4',
+						'!h-[45px] flex-1 !rounded-xl !px-4',
 						[isDark, '!bg-surface-70', '!bg-white']
 					]),
 					prefixIcon: {
@@ -36,7 +36,7 @@
 				:border="false"
 				:pt="{
 					className: parseClass([
-						'!h-[90rpx] flex-1 !rounded-xl !px-4',
+						'!h-[45px] flex-1 !rounded-xl !px-4',
 						[isDark, '!bg-surface-70', '!bg-white']
 					]),
 					prefixIcon: {
@@ -57,7 +57,7 @@
 
 		<cl-button
 			:pt="{
-				className: '!h-[90rpx] !rounded-xl'
+				className: '!h-[45px] !rounded-xl'
 			}"
 			:loading="loading"
 			:disabled="disabled"
@@ -69,11 +69,10 @@
 </template>
 
 <script setup lang="ts">
-import { t } from "@/locale";
 import { computed, inject, ref, type PropType } from "vue";
 import type { LoginForm } from "../../types";
-import SmsBtn from "@/components/sms-btn.uvue";
-import { isDark, parseClass, request, useRefs, type Response } from "@/cool";
+import SmsBtn from "../sms-btn.uvue";
+import { isDark, parseClass, request, useRefs, type Response, t } from "@/.cool";
 import { useUi } from "@/uni_modules/cool-ui";
 
 const props = defineProps({

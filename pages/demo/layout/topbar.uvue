@@ -10,7 +10,7 @@
 					<template #prepend>
 						<cl-icon
 							name="heart-fill"
-							:size="38"
+							:size="18"
 							:pt="{
 								className: 'ml-2'
 							}"
@@ -18,7 +18,7 @@
 					</template>
 
 					<template #append>
-						<cl-icon name="search-line" :size="38"></cl-icon>
+						<cl-icon name="search-line" :size="19"></cl-icon>
 					</template>
 				</cl-topbar>
 			</demo-item>
@@ -49,7 +49,7 @@
 					back-icon="home-2-line"
 					:pt="{
 						back: {
-							size: 38
+							size: 20
 						}
 					}"
 				>
@@ -70,7 +70,7 @@
 
 			<demo-item :label="t('自定义标题内容')">
 				<cl-topbar>
-					<cl-tabs v-model="type" :height="66" :list="typeList"></cl-tabs>
+					<cl-tabs v-model="type" :height="32" :list="typeList"></cl-tabs>
 				</cl-topbar>
 			</demo-item>
 		</view>
@@ -78,7 +78,7 @@
 </template>
 
 <script lang="ts" setup>
-import { t } from "@/locale";
+import { t } from "@/.cool";
 import DemoItem from "../components/item.uvue";
 import { ref } from "vue";
 import type { ClTabsItem } from "@/uni_modules/cool-ui";

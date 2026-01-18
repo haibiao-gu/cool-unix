@@ -29,10 +29,10 @@
 					</cl-form-item>
 
 					<cl-form-item :label="t('详细地址')" prop="address" required>
-						<cl-input
+						<cl-textarea
 							v-model="formData.address"
 							:placeholder="t('小区楼栋、门牌号、村等')"
-						></cl-input>
+						></cl-textarea>
 					</cl-form-item>
 				</cl-form>
 			</view>
@@ -51,11 +51,10 @@
 </template>
 
 <script lang="ts" setup>
-import { router, isEmpty, type Response, request, parse } from "@/cool";
-import { t } from "@/locale";
+import { router, isEmpty, type Response, request, parse, t } from "@/.cool";
 import { useCascader, useForm, useUi, type ClFormRule } from "@/uni_modules/cool-ui";
 import { type Ref, ref } from "vue";
-import pca from "@/data/pca.json";
+import pca from "@/.cool/data/pca.json";
 import type { UserAddress } from "../types";
 
 const props = defineProps({

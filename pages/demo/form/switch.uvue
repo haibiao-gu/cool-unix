@@ -39,8 +39,8 @@
 					v-model="checked"
 					:loading="isLoading"
 					:disabled="isDisabled"
-					:height="isSize ? 60 : 48"
-					:width="isSize ? 100 : 80"
+					:height="isSize ? 30 : 24"
+					:width="isSize ? 50 : 40"
 					:pt="{
 						track: {
 							className: parseClass([[isCustom, '!rounded-md']])
@@ -81,8 +81,8 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import DemoItem from "../components/item.uvue";
-import { parseClass } from "@/cool";
-import { t } from "@/locale";
+import { parseClass } from "@/.cool";
+import { t } from "@/.cool";
 
 const checked = ref(false);
 const isDisabled = ref(false);

@@ -11,4 +11,6 @@ export type ClFooterProps = {
 	pt?: ClFooterPassThrough;
 	minHeight?: number;
 	vt?: number;
+	height?: number;
+	backgroundColor?: string;
 };

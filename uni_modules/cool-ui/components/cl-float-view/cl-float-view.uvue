@@ -12,8 +12,8 @@
 </template>
 
 <script setup lang="ts">
-import { getSafeAreaHeight, getTabBarHeight, hasCustomTabBar, router } from "@/cool";
-import { computed, nextTick, reactive } from "vue";
+import { getSafeAreaHeight, getTabBarHeight, hasCustomTabBar, router } from "@/.cool";
+import { computed, nextTick, reactive, watch } from "vue";
 import { clFooterOffset } from "../cl-footer/offset";
 
 defineOptions({
@@ -26,22 +26,22 @@ const props = defineProps({
 		type: Number,
 		default: 500
 	},
-	// 尺寸
+	// 尺寸，单位px
 	size: {
 		type: Number,
 		default: 40
 	},
-	// 左边距
+	// 左边距，单位px
 	left: {
 		type: Number,
 		default: 10
 	},
-	// 底部距离
+	// 底部距离，单位px
 	bottom: {
 		type: Number,
 		default: 10
 	},
-	// 距离边缘的间距
+	// 距离边缘的间距，单位px
 	gap: {
 		type: Number,
 		default: 10
@@ -286,6 +286,14 @@ function onTouchEnd() {
 		}
 	});
 }
+
+// 监听底部偏移变化
+watch(
+	computed(() => [clFooterOffset.get()]),
+	() => {
+		position.isDragging = true;
+	}
+);
 </script>
 
 <style lang="scss" scoped>

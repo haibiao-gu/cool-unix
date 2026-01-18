@@ -1,5 +1,5 @@
 import { defineConfig } from "vite";
-import { cool } from "@cool-vue/vite-plugin";
+import { cool } from "@cool-vue/unix";
 import { proxy } from "./config/proxy";
 import tailwindcss from "tailwindcss";
 import { join } from "node:path";
@@ -15,11 +15,7 @@ export default defineConfig({
 	plugins: [
 		uni(),
 		cool({
-			type: "uniapp-x",
-			proxy,
-			tailwind: {
-				enable: true
-			}
+			proxy
 		})
 	],
 

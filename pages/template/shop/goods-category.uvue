@@ -13,10 +13,10 @@
 
 			<view class="flex flex-row flex-1">
 				<!-- 左侧分类列表 -->
-				<view class="h-full w-[200rpx] bg-white dark:bg-surface-800 mr-2 rounded-tr-xl">
+				<view class="h-full w-[100px] bg-white dark:bg-surface-800 mr-2 rounded-tr-xl">
 					<scroll-view direction="vertical" :show-scrollbar="false" class="h-full">
 						<view
-							class="h-[100rpx] p-2"
+							class="h-[50px] p-2"
 							v-for="(item, index) in list"
 							:key="item.label"
 							@click="onCategoryChange(index)"
@@ -81,8 +81,9 @@
 											<view class="flex items-center flex-col justify-center">
 												<cl-image :src="goods.image"></cl-image>
 												<cl-text
+													:size="12"
 													:ellipsis="true"
-													:pt="{ className: '!text-xs text-center mt-2' }"
+													:pt="{ className: 'text-center mt-2' }"
 													>{{ goods.name }}</cl-text
 												>
 											</view>
@@ -99,7 +100,7 @@
 </template>
 
 <script setup lang="ts">
-import { isDark, parseClass } from "@/cool";
+import { isDark, parseClass } from "@/.cool";
 import { getCurrentInstance, ref } from "vue";
 
 const { proxy } = getCurrentInstance()!;

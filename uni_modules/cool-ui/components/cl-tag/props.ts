@@ -1,9 +1,8 @@
-import type { Type } from "../../types";
-import type { ClTextPassThrough } from "../cl-text/props";
+import type { PassThroughProps, Type } from "../../types";
 
 export type ClTagPassThrough = {
 	className?: string;
-	text?: ClTextPassThrough;
+	text?: PassThroughProps;
 };
 
 export type ClTagProps = {

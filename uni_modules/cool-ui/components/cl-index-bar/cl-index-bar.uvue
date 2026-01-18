@@ -35,7 +35,7 @@
 
 <script setup lang="ts">
 import { computed, getCurrentInstance, nextTick, onMounted, ref, watch, type PropType } from "vue";
-import { isDark, isEmpty, parsePt } from "@/cool";
+import { isDark, isEmpty, parsePt } from "@/.cool";
 
 defineOptions({
 	name: "cl-index-bar"
@@ -266,13 +266,13 @@ onMounted(() => {
 
 	&__item {
 		@apply flex flex-col items-center justify-center;
-		width: 50rpx;
-		height: 34rpx;
+		width: 25px;
+		height: 17px;
 
 		&-inner {
 			@apply rounded-full flex flex-row items-center justify-center;
-			width: 30rpx;
-			height: 30rpx;
+			width: 15px;
+			height: 15px;
 
 			&.is-active {
 				@apply bg-primary-500;
@@ -291,22 +291,22 @@ onMounted(() => {
 
 .cl-index-bar__alert {
 	@apply absolute bottom-0 right-8 h-full flex flex-col items-center justify-center;
-	width: 120rpx;
+	width: 60px;
 	z-index: 110;
 
 	&-icon {
 		@apply rounded-full flex flex-row items-center justify-center;
 		@apply bg-surface-300;
-		height: 80rpx;
-		width: 80rpx;
+		height: 40px;
+		width: 40px;
 		overflow: visible;
 	}
 
 	&-arrow {
 		@apply bg-surface-300 absolute;
-		right: -8rpx;
-		height: 40rpx;
-		width: 40rpx;
+		right: -4px;
+		height: 20px;
+		width: 20px;
 		transform: rotate(45deg);
 	}
 

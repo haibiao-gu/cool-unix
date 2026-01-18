@@ -17,9 +17,9 @@
 </template>
 
 <script lang="ts" setup>
-import { router, uuid } from "@/cool";
+import { router, uuid } from "@/.cool";
 import DemoItem from "../../components/item.uvue";
-import { t } from "@/locale";
+import { t } from "@/.cool";
 
 function toPush() {
 	router.to("/pages/demo/other/router/query");

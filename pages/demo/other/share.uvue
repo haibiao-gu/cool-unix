@@ -25,7 +25,7 @@
 import { shareWithSystem } from "@/uni_modules/cool-share";
 // #endif
 import DemoItem from "../components/item.uvue";
-import { t } from "@/locale";
+import { t } from "@/.cool";
 
 function shareText() {
 	// #ifdef APP

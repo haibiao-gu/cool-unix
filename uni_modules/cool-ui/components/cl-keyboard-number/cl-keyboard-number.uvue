@@ -22,16 +22,11 @@
 					class="cl-keyboard-number__value"
 					:class="[pt.value?.className]"
 				>
-					<cl-text
-						v-if="value != ''"
-						:pt="{
-							className: 'text-2xl'
-						}"
-						>{{ value }}</cl-text
-					>
+					<cl-text v-if="value != ''" :size="24">{{ value }}</cl-text>
 
 					<cl-text
 						v-else
+						:size="16"
 						:pt="{
 							className: 'text-md text-surface-400'
 						}"
@@ -41,9 +36,9 @@
 			</slot>
 
 			<view class="cl-keyboard-number__list">
-				<cl-row :gutter="10">
+				<cl-row :gutter="8">
 					<cl-col :span="18">
-						<cl-row :gutter="10">
+						<cl-row :gutter="8">
 							<cl-col :span="8" v-for="item in list" :key="item">
 								<view
 									class="cl-keyboard-number__item"
@@ -60,34 +55,8 @@
 									@touchstart.stop="onCommand(item)"
 								>
 									<slot name="item" :item="item">
-										<cl-icon
-											v-if="item == 'delete'"
-											name="delete-back-2-line"
-											:size="36"
-										></cl-icon>
-
-										<view
-											v-else-if="item == 'confirm'"
-											class="cl-keyboard-number__item-confirm"
-										>
-											<cl-text
-												color="white"
-												:pt="{
-													className: 'text-lg'
-												}"
-												>{{ confirmText }}</cl-text
-											>
-										</view>
-
-										<view v-else-if="item == '_confirm'"></view>
-
-										<cl-text
-											v-else
-											:pt="{
-												className: 'text-lg'
-											}"
-											>{{ item }}</cl-text
-										>
+										<view v-if="item == '_confirm'"></view>
+										<cl-text v-else :size="18">{{ item }}</cl-text>
 									</slot>
 								</view>
 							</cl-col>
@@ -113,17 +82,12 @@
 								<cl-icon
 									v-if="item == 'delete'"
 									name="delete-back-2-line"
-									:size="36"
+									:size="20"
 								></cl-icon>
 
-								<cl-text
-									v-if="item == 'confirm'"
-									color="white"
-									:pt="{
-										className: 'text-lg'
-									}"
-									>{{ confirmText }}</cl-text
-								>
+								<cl-text v-if="item == 'confirm'" color="white" :size="16">{{
+									confirmText
+								}}</cl-text>
 							</view>
 						</view>
 					</cl-col>
@@ -138,9 +102,7 @@ import { useUi } from "../../hooks";
 import type { PassThroughProps } from "../../types";
 import type { ClPopupProps } from "../cl-popup/props";
 import { ref, computed, watch, type PropType } from "vue";
-import { $t, t } from "@/locale";
-import { isAppIOS, isDark, parseClass, parsePt } from "@/cool";
-import { vibrate } from "@/uni_modules/cool-vibrate";
+import { isDark, parseClass, parsePt, $t, t } from "@/.cool";
 
 defineOptions({
 	name: "cl-keyboard-number"
@@ -266,9 +228,7 @@ function close() {
 // 处理键盘按键点击事件
 function onCommand(key: string) {
 	// 震动
-	try {
-		vibrate(1);
-	} catch (error) {}
+	uni.$emit("cool.vibrate");
 
 	// 确认按钮逻辑
 	if (key == "confirm" || key == "_confirm") {
@@ -385,12 +345,11 @@ defineExpose({
 
 <style lang="scss" scoped>
 .cl-keyboard-number {
-	padding: 0 20rpx 20rpx 20rpx;
+	@apply p-3 pt-0;
 
 	&__value {
-		@apply flex flex-row items-center justify-center;
-		height: 80rpx;
-		margin-bottom: 20rpx;
+		@apply flex flex-row items-center justify-center mb-3;
+		height: 40px;
 	}
 
 	&__list {
@@ -403,8 +362,8 @@ defineExpose({
 
 	&__item {
 		@apply flex items-center justify-center rounded-xl bg-white overflow-visible;
-		height: 100rpx;
-		margin-top: 10rpx;
+		@apply mt-2;
+		height: 50px;
 
 		&.is-dark {
 			@apply bg-surface-800;

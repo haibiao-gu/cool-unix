@@ -10,7 +10,7 @@
 			</demo-item>
 
 			<demo-item :label="t('自定义宽度')">
-				<cl-progress :value="30" :stroke-width="20"></cl-progress>
+				<cl-progress :value="30" :stroke-width="10"></cl-progress>
 			</demo-item>
 
 			<demo-item :label="t('不显示文本')">
@@ -21,6 +21,6 @@
 </template>
 
 <script lang="ts" setup>
-import { t } from "@/locale";
+import { t } from "@/.cool";
 import DemoItem from "../components/item.uvue";
 </script>

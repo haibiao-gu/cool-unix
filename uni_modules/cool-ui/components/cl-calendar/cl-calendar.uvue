@@ -16,13 +16,13 @@
 				:class="{ 'is-dark': isDark }"
 				@tap.stop="gotoPrevMonth"
 			>
-				<cl-icon name="arrow-left-s-line"></cl-icon>
+				<cl-icon name="arrow-left-s-line" :size="16"></cl-icon>
 			</view>
 
 			<!-- 当前年月显示区域 -->
 			<view class="cl-calendar__header-date" @tap="refs.open('picker')">
 				<slot name="current-date">
-					<cl-text :pt="{ className: 'text-lg' }">{{
+					<cl-text :size="18">{{
 						$t(`{year}年{month}月`, { year: currentYear, month: currentMonth })
 					}}</cl-text>
 				</slot>
@@ -34,7 +34,7 @@
 				:class="{ 'is-dark': isDark }"
 				@tap.stop="gotoNextMonth"
 			>
-				<cl-icon name="arrow-right-s-line"></cl-icon>
+				<cl-icon name="arrow-right-s-line" :size="16"></cl-icon>
 			</view>
 		</view>
 
@@ -79,10 +79,10 @@
 				>
 					<!-- 顶部文本 -->
 					<cl-text
-						:size="20"
+						:size="10"
 						:color="getCellTextColor(dateCell)"
 						:pt="{
-							className: 'absolute top-[2px]'
+							className: 'absolute top-[4px]'
 						}"
 						>{{ dateCell.topText }}</cl-text
 					>
@@ -90,7 +90,7 @@
 					<!-- 主日期数字 -->
 					<cl-text
 						:color="getCellTextColor(dateCell)"
-						:size="`${fontSize}px`"
+						:size="fontSize"
 						:pt="{
 							className: 'font-bold'
 						}"
@@ -99,10 +99,10 @@
 
 					<!-- 底部文本 -->
 					<cl-text
-						:size="20"
+						:size="10"
 						:color="getCellTextColor(dateCell)"
 						:pt="{
-							className: 'absolute bottom-[2px]'
+							className: 'absolute bottom-[4px]'
 						}"
 						>{{ dateCell.bottomText }}</cl-text
 					>
@@ -115,9 +115,8 @@
 
 <script lang="ts" setup>
 import { computed, nextTick, onMounted, ref, watch, type PropType } from "vue";
-import { ctx, dayUts, first, isDark, isHarmony, parsePt, useRefs } from "@/cool";
+import { ctx, dayUts, first, isDark, isHarmony, parsePt, useRefs, $t, t } from "@/.cool";
 import CalendarPicker from "./picker.uvue";
-import { $t, t } from "@/locale";
 import type { ClCalendarDateConfig, ClCalendarMode } from "../../types";
 import { useSize } from "../../hooks";
 
@@ -262,7 +261,7 @@ type PassThrough = {
 const pt = computed(() => parsePt<PassThrough>(props.pt));
 
 // 字体大小
-const { getPxValue } = useSize();
+const { toScale } = useSize();
 
 // 主色
 const color = computed(() => {
@@ -282,7 +281,7 @@ const cellGap = computed(() => props.cellGap);
 // 字体大小
 const fontSize = computed(() => {
 	// #ifdef APP
-	return getPxValue("14px");
+	return toScale(14);
 	// #endif
 
 	// #ifndef APP
@@ -869,8 +868,8 @@ onMounted(() => {
 		&-prev,
 		&-next {
 			@apply flex flex-row items-center justify-center rounded-full bg-surface-100;
-			width: 60rpx;
-			height: 60rpx;
+			width: 30px;
+			height: 30px;
 
 			/* 暗色模式适配 */
 			&.is-dark {
@@ -891,7 +890,7 @@ onMounted(() => {
 		/* 单个星期标题样式 */
 		&-item {
 			@apply flex flex-row items-center justify-center flex-1;
-			height: 80rpx;
+			height: 40px;
 		}
 	}
 
@@ -908,7 +907,7 @@ onMounted(() => {
 		/* 日期单元格样式 */
 		&-cell {
 			@apply flex-1 flex flex-col items-center justify-center relative;
-			height: 80rpx;
+			height: 40px;
 
 			/* 隐藏状态（相邻月份日期） */
 			&.is-hide {

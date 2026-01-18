@@ -32,7 +32,7 @@
 					<cl-icon
 						v-if="icon != ''"
 						:name="icon"
-						:size="pt.icon?.size ?? 36"
+						:size="pt.icon?.size ?? 20"
 						:color="pt.icon?.color"
 						:pt="{
 							className: `mr-3 ${pt.icon?.className}`
@@ -54,6 +54,8 @@
 
 				<cl-text
 					v-if="label != ''"
+					:size="pt.label?.size"
+					:color="pt.label?.color"
 					:pt="{
 						className: parseClass([
 							'cl-list-item__label whitespace-nowrap overflow-visible',
@@ -81,7 +83,7 @@
 
 				<cl-icon
 					name="arrow-right-s-line"
-					:size="36"
+					:size="18"
 					:pt="{
 						className: parseClass([
 							'text-surface-400 ml-1 duration-200',
@@ -106,7 +108,7 @@
 		<cl-collapse
 			v-model="isCollapse"
 			:pt="{
-				className: parseClass(['p-[24rpx]', pt.collapse?.className])
+				className: parseClass(['p-3', pt.collapse?.className])
 			}"
 		>
 			<slot name="collapse"></slot>
@@ -124,11 +126,12 @@ import {
 	useSlots,
 	type PropType
 } from "vue";
-import { isAppIOS, isDark, isHarmony, parseClass, parsePt } from "@/cool";
+import { isAppIOS, isDark, isHarmony, parseClass, parsePt } from "@/.cool";
 import type { Justify, PassThroughProps } from "../../types";
 import type { ClIconProps } from "../cl-icon/props";
 import type { ClImageProps } from "../cl-image/props";
 import { useTouch } from "../../hooks";
+import type { ClTextProps } from "../cl-text/props";
 
 defineOptions({
 	name: "cl-list-item"
@@ -197,7 +200,7 @@ type PassThrough = {
 	className?: string; // 根元素类名
 	wrapper?: PassThroughProps; // 包裹容器样式
 	inner?: PassThroughProps; // 内部容器样式
-	label?: PassThroughProps; // 标签文本样式
+	label?: ClTextProps; // 标签文本样式
 	content?: PassThroughProps; // 内容区域样式
 	icon?: ClIconProps; // 图标样式
 	image?: ClImageProps; // 图片样式
@@ -425,7 +428,7 @@ defineExpose({
 
 	&__inner {
 		@apply flex flex-row items-center;
-		padding: 24rpx;
+		padding: 12px;
 	}
 
 	&__content {
@@ -438,7 +441,7 @@ defineExpose({
 
 		&-left {
 			@apply left-full;
-			transform: translateX(1rpx);
+			transform: translateX(0.5px);
 		}
 
 		&-right {

@@ -26,8 +26,8 @@
 </template>
 
 <script lang="ts" setup>
-import { isEmpty, isHarmony, router } from "@/cool";
-import { computed, getCurrentInstance, nextTick, onMounted, reactive, ref, watch } from "vue";
+import { isEmpty, isHarmony, router } from "@/.cool";
+import { computed, getCurrentInstance, onMounted, reactive, ref, watch } from "vue";
 import { usePage } from "../../hooks";
 
 defineOptions({
@@ -40,14 +40,17 @@ defineSlots<{
 }>();
 
 const props = defineProps({
+	// 吸顶偏移量, 单位px
 	offsetTop: {
 		type: Number,
 		default: 0
 	},
+	// 层级
 	zIndex: {
 		type: Number,
 		default: 100
 	},
+	// 滚动位置
 	scrollTop: {
 		type: Number,
 		default: 0

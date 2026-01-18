@@ -9,15 +9,7 @@
 			},
 			pt.className
 		]"
-		:style="{
-			height: getPx(size!),
-			width: getPx(size!),
-			borderWidth: '1px',
-			borderTopColor: color,
-			borderRightColor: 'transparent',
-			borderBottomColor: color,
-			borderLeftColor: color
-		}"
+		:style="loadingStyle"
 		v-if="loading"
 	>
 	</view>
@@ -25,7 +17,7 @@
 
 <script setup lang="ts">
 import { computed, onMounted, shallowRef, watch } from "vue";
-import { createAnimation, ctx, isDark, parsePt } from "@/cool";
+import { createAnimation, ctx, isAppAndroid, isDark, parsePt } from "@/.cool";
 import type { ClIconProps } from "../cl-icon/props";
 import { useSize } from "../../hooks";
 
@@ -47,8 +39,8 @@ const props = defineProps({
 	},
 	// 图标大小
 	size: {
-		type: [Number, String],
-		default: 24
+		type: Number,
+		default: 14
 	},
 	// 图标颜色
 	color: {
@@ -57,7 +49,7 @@ const props = defineProps({
 	}
 });
 
-const { getPx } = useSize();
+const { toScale } = useSize();
 
 // 透传样式类型定义
 type PassThrough = {
@@ -97,6 +89,32 @@ const color = computed<string>(() => {
 		default:
 			return props.color;
 	}
+});
+
+// 大小
+const size = computed(() => toScale(props.size) + "px");
+
+// 加载样式
+const loadingStyle = computed(() => {
+	const style = {
+		height: size.value,
+		width: size.value,
+		borderWidth: "1px",
+		borderTopColor: color.value,
+		borderRightColor: "transparent",
+		borderBottomColor: color.value,
+		borderLeftColor: color.value
+	};
+
+	// 手动校准偏移量
+	if (isAppAndroid()) {
+		if (props.size <= 16) {
+			style["position"] = "relative";
+			style["top"] = "-0.5px";
+		}
+	}
+
+	return style;
 });
 
 // 开始旋转动画

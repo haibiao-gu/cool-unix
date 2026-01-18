@@ -32,12 +32,7 @@
 
 		<view class="p-3">
 			<view class="p-3 rounded-xl bg-white dark:!bg-surface-800 mb-3">
-				<cl-text
-					:pt="{
-						className: 'text-sm'
-					}"
-					>🔥 最新降价商品，限时优惠，抓紧抢购！</cl-text
-				>
+				<cl-text>🔥 最新降价商品，限时优惠，抓紧抢购！</cl-text>
 			</view>
 
 			<cl-list-item
@@ -55,17 +50,17 @@
 				swipeable
 			>
 				<view class="flex flex-row flex-1">
-					<view class="flex flex-col mr-4 pt-[55rpx]" @tap="selectItem(item)">
+					<view class="flex flex-col mr-4 pt-[28px]" @tap="selectItem(item)">
 						<cl-icon
 							name="checkbox-circle-line"
 							color="primary"
-							:size="40"
+							:size="20"
 							v-if="item.checked"
 						></cl-icon>
-						<cl-icon name="checkbox-blank-circle-line" :size="40" v-else></cl-icon>
+						<cl-icon name="checkbox-blank-circle-line" :size="20" v-else></cl-icon>
 					</view>
 
-					<cl-image :width="150" :height="150" :src="item.cover"></cl-image>
+					<cl-image :width="76" :height="76" :src="item.cover"></cl-image>
 
 					<view class="flex flex-col ml-3 flex-1">
 						<cl-text
@@ -79,42 +74,42 @@
 							<view
 								class="bg-surface-100 dark:!bg-surface-700 rounded-md py-1 px-2 flex flex-row items-center"
 							>
-								<cl-text
-									:pt="{
-										className: 'text-xs'
-									}"
-									>{{ item.skuName }}</cl-text
-								>
-								<cl-icon name="arrow-down-s-line"></cl-icon>
+								<cl-text :size="12">{{ item.skuName }}</cl-text>
+								<cl-icon
+									name="arrow-down-s-line"
+									:pt="{ className: 'ml-1' }"
+								></cl-icon>
 							</view>
 						</view>
 
 						<view class="flex flex-row items-center mb-2">
 							<cl-text
+								:size="11"
 								:pt="{
-									className: 'text-[22rpx] text-red-500 mr-[1rpx]'
+									className: 'text-red-500 mr-[1px]'
 								}"
 								>¥</cl-text
 							>
 							<cl-text
+								:size="16"
 								:pt="{
-									className: 'text-red-500 text-[32rpx] mr-auto'
+									className: 'text-red-500 mr-auto'
 								}"
 								>{{ item.price }}</cl-text
 							>
 
 							<view
 								v-if="isDel"
-								class="p-[8rpx] bg-red-500 rounded-lg"
+								class="p-1 bg-red-500 rounded-lg"
 								@tap="delItem(index)"
 							>
-								<cl-icon name="delete-bin-line" color="white" :size="24"></cl-icon>
+								<cl-icon name="delete-bin-line" color="white"></cl-icon>
 							</view>
 
 							<view class="flex" v-else>
 								<cl-input-number
 									v-model="item.count"
-									:size="40"
+									:size="20"
 									:min="1"
 									:pt="{
 										op: {
@@ -125,13 +120,13 @@
 												className: '!rounded-full'
 											},
 											icon: {
-												size: 28
+												size: 14
 											}
 										},
 										value: {
-											className: '!w-[60rpx] rounded-full !px-0',
+											className: '!w-[30px] rounded-full !px-0',
 											input: {
-												className: 'text-[24rpx]'
+												className: '!text-[12px]'
 											}
 										}
 									}"
@@ -139,9 +134,11 @@
 							</view>
 						</view>
 
-						<cl-text :size="22" color="error">比加入时降¥100</cl-text>
+						<cl-text :size="11" color="error" :pt="{ className: 'mb-1' }"
+							>比加入时降100元</cl-text
+						>
 
-						<cl-text :size="22">满1件可换购0.5元商品</cl-text>
+						<cl-text :size="11">满1件可换购0.5元商品</cl-text>
 					</view>
 				</view>
 
@@ -149,7 +146,7 @@
 					<cl-button
 						type="error"
 						:pt="{
-							className: '!rounded-none h-full w-[160rpx]'
+							className: '!rounded-none h-full w-[80px]'
 						}"
 						@tap="delItem(index)"
 						>{{ t("删除") }}</cl-button
@@ -161,14 +158,14 @@
 		</view>
 
 		<cl-footer>
-			<view class="flex flex-row items-center h-[70rpx]">
+			<view class="flex flex-row items-center h-[35px]">
 				<cl-checkbox
 					active-icon="checkbox-circle-line"
 					inactive-icon="checkbox-blank-circle-line"
 					:pt="{
 						className: 'mr-auto'
 					}"
-					:size="28"
+					:size="14"
 					v-model="selectAll"
 					@change="onSelectAllChange"
 					>{{ t("全选") }}</cl-checkbox
@@ -188,13 +185,7 @@
 
 				<template v-else>
 					<view class="flex flex-col mr-3 items-end pt-1">
-						<cl-text
-							color="info"
-							:pt="{
-								className: 'text-xs'
-							}"
-							>{{ t("合计") }}</cl-text
-						>
+						<cl-text :size="12" color="info">{{ t("合计") }}</cl-text>
 						<cl-text color="error" :value="totalPrice" type="amount"></cl-text>
 					</view>
 
@@ -214,8 +205,7 @@
 </template>
 
 <script lang="ts" setup>
-import { parseClass, isEmpty } from "@/cool";
-import { $t, t } from "@/locale";
+import { parseClass, isEmpty, $t, t } from "@/.cool";
 import { useUi } from "@/uni_modules/cool-ui";
 import { computed, ref } from "vue";
 

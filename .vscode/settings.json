@@ -10,7 +10,11 @@
 	"[uvue]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
-	"prettier.documentSelectors": ["**/*.uvue", "**/*.uts", "**/*.ts"],
+	"prettier.documentSelectors": [
+		"**/*.uvue",
+		"**/*.uts",
+		"**/*.ts"
+	],
 	"prettier.requireConfig": true,
 	"[ets]": {
 		"editor.defaultFormatter": "NailyZero.vscode-naily-ets"

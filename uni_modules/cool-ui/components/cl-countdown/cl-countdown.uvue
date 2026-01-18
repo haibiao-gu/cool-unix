@@ -16,7 +16,7 @@
 <script lang="ts" setup>
 import { ref, watch, nextTick, computed, type PropType, onMounted, onUnmounted } from "vue";
 import type { PassThroughProps } from "../../types";
-import { dayUts, get, has, isEmpty, parsePt } from "@/cool";
+import { dayUts, get, has, isEmpty, parsePt } from "@/.cool";
 
 type Item = {
 	value: string;

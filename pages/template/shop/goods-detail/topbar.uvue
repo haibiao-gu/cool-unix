@@ -5,13 +5,13 @@
 				:list="list"
 				v-model="active"
 				height="36px"
-				:gutter="20"
+				:gutter="12"
 				@change="onTabChange"
 			></cl-tabs>
 
 			<template #append>
 				<view class="h-[44px] w-[30px] flex items-center justify-center mr-1">
-					<cl-icon name="search-line"></cl-icon>
+					<cl-icon name="search-line" :size="16"></cl-icon>
 				</view>
 			</template>
 		</cl-topbar>
@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import { debounce, getSafeAreaHeight, isNull } from "@/cool";
+import { debounce, getSafeAreaHeight, isNull } from "@/.cool";
 import { usePage, type ClTabsItem } from "@/uni_modules/cool-ui";
 import { getCurrentInstance, onMounted, onUnmounted, ref } from "vue";
 

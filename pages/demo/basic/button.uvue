@@ -10,9 +10,7 @@
 					<cl-button type="primary">{{ t("主要") }}</cl-button>
 					<cl-button type="success">{{ t("成功") }}</cl-button>
 					<cl-button type="warn">{{ t("警告") }}</cl-button>
-				</view>
 
-				<view class="flex flex-row mb-2 overflow-visible">
 					<cl-button type="error">{{ t("危险") }}</cl-button>
 					<cl-button type="info">{{ t("信息") }}</cl-button>
 				</view>
@@ -41,7 +39,7 @@
 						:rounded="isRounded"
 						:loading="isLoading"
 						:disabled="isDisabled"
-						:icon="isIcon ? 'edit-fill' : ''"
+						:icon="isIcon ? 'send-plane-fill' : ''"
 						:color="isColor ? '#4286e0' : ''"
 						:pt="{
 							className: parseClass([
@@ -56,13 +54,7 @@
 
 				<cl-list border>
 					<view class="p-2">
-						<cl-tabs
-							v-model="size"
-							:height="66"
-							:list="sizeOptions"
-							show-slider
-							fill
-						></cl-tabs>
+						<cl-tabs v-model="size" :list="sizeOptions" show-slider fill></cl-tabs>
 					</view>
 
 					<cl-list-item :label="t('文本模式')">
@@ -102,8 +94,7 @@
 import { ref } from "vue";
 import DemoItem from "../components/item.uvue";
 import type { ClButtonType, ClTabsItem, Size } from "@/uni_modules/cool-ui";
-import { parseClass } from "@/cool";
-import { t } from "@/locale";
+import { parseClass, t } from "@/.cool";
 
 const type = ref<ClButtonType>("primary");
 

@@ -108,10 +108,8 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import DemoItem from "../components/item.uvue";
-import { parseClass } from "@/cool";
+import { parseClass, isDark, t } from "@/.cool";
 import { useUi, type ClRadioOption } from "@/uni_modules/cool-ui";
-import { isDark } from "@/cool";
-import { t } from "@/locale";
 
 const ui = useUi();
 

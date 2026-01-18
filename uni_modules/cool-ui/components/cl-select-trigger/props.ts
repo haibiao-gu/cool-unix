@@ -1,11 +1,12 @@
 import type { ClIconProps } from "../cl-icon/props";
 import type { PassThroughProps } from "../../types";
+import type { ClTextProps } from "../cl-text/props";
 
 export type ClSelectTriggerPassThrough = {
 	className?: string;
 	icon?: ClIconProps;
 	placeholder?: PassThroughProps;
-	text?: PassThroughProps;
+	text?: ClTextProps;
 };
 
 export type ClSelectTriggerProps = {

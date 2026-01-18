@@ -33,20 +33,20 @@
 						class="flex flex-row items-center justify-center h-14"
 						v-if="content == ''"
 					>
-						<cl-loading :size="32"></cl-loading>
+						<cl-loading></cl-loading>
 					</view>
 				</cl-read-more>
 			</demo-item>
 
 			<demo-item :label="t('自定义高度')">
-				<cl-read-more :height="300">
+				<cl-read-more :height="150">
 					<cl-text>
 						云想衣裳花想容，春风拂槛露华浓。若非群玉山头见，会向瑶台月下逢。
 						一枝红艳露凝香，云雨巫山枉断肠。借问汉宫谁得似？可怜飞燕倚新妆。
 					</cl-text>
 
 					<cl-image
-						:height="300"
+						:height="150"
 						width="100%"
 						:pt="{
 							className: 'my-3'
@@ -64,7 +64,7 @@
 </template>
 
 <script lang="ts" setup>
-import { t } from "@/locale";
+import { t } from "@/.cool";
 import DemoItem from "../components/item.uvue";
 import { ref } from "vue";
 import { useUi } from "@/uni_modules/cool-ui";

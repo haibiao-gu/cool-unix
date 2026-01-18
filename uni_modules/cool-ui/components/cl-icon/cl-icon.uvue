@@ -5,8 +5,8 @@
 </template>
 
 <script setup lang="ts">
-import { computed, type PropType } from "vue";
-import { parsePt, useCache, isDark, ctx, hasTextColor, isNull } from "@/cool";
+import { computed } from "vue";
+import { parsePt, useCache, isDark, ctx, hasTextColor, isNull } from "@/.cool";
 import { useSize } from "../../hooks";
 import { getIcon } from "./utils";
 
@@ -28,17 +28,17 @@ const props = defineProps({
 	},
 	// 图标大小
 	size: {
-		type: [String, Number] as PropType<string | number>,
-		default: 32
+		type: Number,
+		default: 16
 	},
 	// 图标高度
 	height: {
-		type: [String, Number] as PropType<string | number>,
+		type: Number,
 		default: null
 	},
 	// 图标宽度
 	width: {
-		type: [String, Number] as PropType<string | number>,
+		type: Number,
 		default: null
 	},
 	// 图标颜色
@@ -60,7 +60,7 @@ const pt = computed(() => parsePt<PassThrough>(props.pt));
 const { cache } = useCache(() => [props.color]);
 
 // 字号
-const { getRpx, ptClassName } = useSize(() => pt.value.className ?? "");
+const { toScale, ptClassName } = useSize(() => pt.value.className ?? "");
 
 // 图标信息
 const icon = computed(() => getIcon(props.name));
@@ -108,14 +108,22 @@ const iconStyle = computed(() => {
 	}
 
 	// 设置字体大小
-	style["fontSize"] = getRpx(props.size!);
+	style["fontSize"] = toScale(props.size) + "px";
 
+	// #ifdef APP
 	// 设置高度
-	style["height"] = getRpx(props.height ?? props.size!);
-	style["lineHeight"] = getRpx(props.size!);
+	style["height"] = toScale(props.height ?? props.size) + "px";
+	style["lineHeight"] = toScale(props.size) + "px";
+
+	// 手动校准偏移量
+	if (props.size <= 16) {
+		style["position"] = "relative";
+		style["top"] = "-0.5px";
+	}
 
 	// 设置宽度
-	style["width"] = getRpx(props.width ?? props.size!);
+	style["width"] = toScale(props.width ?? props.size) + "px";
+	// #endif
 
 	return style;
 });

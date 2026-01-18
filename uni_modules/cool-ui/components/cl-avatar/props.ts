@@ -9,6 +9,6 @@ export type ClAvatarProps = {
 	className?: string;
 	pt?: ClAvatarPassThrough;
 	src?: string;
-	size?: any;
+	size?: number;
 	rounded?: boolean;
 };

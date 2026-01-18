@@ -1,4 +1,4 @@
-import { get } from "@/cool";
+import { get } from "@/.cool";
 import { proxy, value } from "./proxy";
 
 export const dev = () => {

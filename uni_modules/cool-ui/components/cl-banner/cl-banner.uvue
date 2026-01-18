@@ -3,7 +3,7 @@
 		class="cl-banner"
 		:class="[pt.className]"
 		:style="{
-			height: parseRpx(height)
+			height: getUnit(height)
 		}"
 		@touchstart="onTouchStart"
 		@touchmove="onTouchMove"
@@ -60,7 +60,7 @@
 
 <script setup lang="ts">
 import { computed, ref, onMounted, watch, getCurrentInstance, type PropType } from "vue";
-import { parsePt, parseRpx } from "@/cool";
+import { parsePt, getUnit } from "@/.cool";
 import type { PassThroughProps } from "../../types";
 import { useTouch } from "../../hooks";
 
@@ -121,7 +121,7 @@ const props = defineProps({
 	// 高度
 	height: {
 		type: [Number, String],
-		default: 300
+		default: 160
 	},
 	// 图片模式
 	imageMode: {

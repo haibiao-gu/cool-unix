@@ -36,8 +36,8 @@
 </template>
 
 <script lang="ts" setup>
-import { useCache } from "@/cool";
-import { t } from "@/locale";
+import { useCache } from "@/.cool";
+import { t } from "@/.cool";
 import { ref } from "vue";
 import DemoItem from "../components/item.uvue";
 

@@ -1,6 +1,6 @@
 import { computed, ref, type ComputedRef } from "vue";
 import type { ClFormRule, ClFormValidateError } from "../types";
-import { useParent } from "@/cool";
+import { useParent } from "@/.cool";
 
 export class Form {
 	public formRef = ref<ClFormComponentPublicInstance | null>(null);

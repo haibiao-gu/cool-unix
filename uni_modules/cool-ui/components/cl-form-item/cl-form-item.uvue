@@ -18,7 +18,7 @@
 				}"
 				v-if="label != ''"
 			>
-				<cl-text>{{ label }}</cl-text>
+				<cl-text :size="pt.label?.size ?? 13" :color="pt.label?.color">{{ label }}</cl-text>
 
 				<cl-text
 					color="error"
@@ -41,7 +41,7 @@
 				<cl-text
 					color="error"
 					:pt="{
-						className: parseClass(['mt-2 text-sm', pt.error?.className])
+						className: parseClass(['mt-2', pt.error?.className])
 					}"
 				>
 					{{ errorText }}
@@ -53,9 +53,10 @@
 
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, watch, type PropType } from "vue";
-import { isEqual, parseClass, parsePt } from "@/cool";
+import { isEqual, parseClass, parsePt } from "@/.cool";
 import type { ClFormLabelPosition, ClFormRule, PassThroughProps } from "../../types";
 import { useForm } from "../../hooks";
+import type { ClTextProps } from "../cl-text/props";
 
 defineOptions({
 	name: "cl-form-item"
@@ -122,7 +123,7 @@ const { formRef, getError, getValue, validateField, addField, removeField, setRu
 type PassThrough = {
 	className?: string;
 	inner?: PassThroughProps;
-	label?: PassThroughProps;
+	label?: ClTextProps;
 	content?: PassThroughProps;
 	error?: PassThroughProps;
 };
@@ -147,7 +148,7 @@ const labelPosition = computed<ClFormLabelPosition>(() => {
 
 // 标签宽度
 const labelWidth = computed<string>(() => {
-	return props.labelWidth ?? formRef.value?.labelWidth ?? "120rpx";
+	return props.labelWidth ?? formRef.value?.labelWidth ?? "60px";
 });
 
 // 计算是否必填

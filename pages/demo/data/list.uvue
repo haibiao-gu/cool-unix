@@ -40,6 +40,9 @@
 						image: {
 							width: 48,
 							height: 48
+						},
+						label: {
+							size: 16
 						}
 					}"
 					:label="t('神仙都没用')"
@@ -66,7 +69,7 @@
 						<view
 							class="bg-green-500 w-20 h-full flex flex-row items-center justify-center"
 						>
-							<text class="text-white text-md">{{ t("编辑") }}</text>
+							<cl-text color="white">{{ t("编辑") }}</cl-text>
 						</view>
 					</template>
 				</cl-list-item>
@@ -77,7 +80,7 @@
 							class="bg-red-500 w-20 h-full flex flex-row items-center justify-center"
 							@tap="onDelete"
 						>
-							<text class="text-white text-md">{{ t("删除") }}</text>
+							<cl-text color="white">{{ t("删除") }}</cl-text>
 						</view>
 					</template>
 				</cl-list-item>
@@ -90,7 +93,7 @@
 			</demo-item>
 
 			<demo-item :label="t('列表')">
-				<cl-list border>
+				<cl-list border title="我的列表">
 					<cl-list-item :label="t('我的订单')" hoverable> </cl-list-item>
 					<cl-list-item :label="t('我的收藏')" hoverable> </cl-list-item>
 					<cl-list-item :label="t('我的钱包')" hoverable> </cl-list-item>
@@ -101,7 +104,7 @@
 </template>
 
 <script lang="ts" setup>
-import { t } from "@/locale";
+import { t } from "@/.cool";
 import DemoItem from "../components/item.uvue";
 import { useUi } from "@/uni_modules/cool-ui";
 import { ref } from "vue";

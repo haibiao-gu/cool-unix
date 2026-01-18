@@ -1,11 +1,5 @@
 import { reactive } from "vue";
-
-type Config = {
-	fontSize: number | null;
-	zIndex: number;
-	startDate: string;
-	endDate: string;
-};
+import type { Config } from "./types";
 
 export const config = reactive<Config>({
 	fontSize: null,

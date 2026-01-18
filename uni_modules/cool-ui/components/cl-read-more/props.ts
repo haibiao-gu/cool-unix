@@ -14,7 +14,7 @@ export type ClReadMoreProps = {
 	pt?: ClReadMorePassThrough;
 	modelValue?: boolean;
 	content?: string;
-	height?: any;
+	height?: number;
 	expandText?: string;
 	collapseText?: string;
 	expandIcon?: string;

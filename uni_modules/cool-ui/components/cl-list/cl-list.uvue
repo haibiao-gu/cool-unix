@@ -1,16 +1,15 @@
 <template>
 	<view
-		class="cl-list dark:!border-surface-700"
+		class="cl-list"
 		:class="[
 			{
-				'cl-list--border': border
+				'cl-list--border': border,
+				'!border-surface-700': isDark
 			},
 			pt.className
 		]"
 	>
-		<slot name="header">
-			<text class="cl-list__title" v-if="title != ''">{{ title }}</text>
-		</slot>
+		<slot name="header"> </slot>
 
 		<view class="cl-list__items">
 			<view v-for="(item, index) in list" :key="index">
@@ -46,7 +45,7 @@
 import type { ClListItem, PassThroughProps } from "../../types";
 import type { ClListItemPassThrough } from "../cl-list-item/props";
 import { computed, type PropType } from "vue";
-import { parsePt } from "@/cool";
+import { isDark, parsePt } from "@/.cool";
 
 defineOptions({
 	name: "cl-list"
@@ -65,10 +64,6 @@ const props = defineProps({
 	list: {
 		type: Array as PropType<ClListItem[]>,
 		default: () => []
-	},
-	title: {
-		type: String,
-		default: ""
 	},
 	border: {
 		type: Boolean,
@@ -90,21 +85,16 @@ const pt = computed(() => parsePt<PassThrough>(props.pt));
 	@apply duration-200;
 	transition-property: border-color, background-color;
 
-	&__title {
-		@apply text-surface-500 text-sm pb-2;
-		padding-left: 24rpx;
-	}
-
 	&__items {
 		@apply rounded-2xl overflow-hidden;
 	}
 
 	&__line {
-		padding: 0 24rpx;
+		padding: 0 12px;
 
 		&-inner {
 			@apply bg-surface-50 w-full;
-			height: 1rpx;
+			height: 1px;
 		}
 	}
 

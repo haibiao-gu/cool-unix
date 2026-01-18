@@ -67,9 +67,7 @@
 								</view>
 							</cl-form-item>
 
-							<cl-button size="large" icon="add-line" @tap="addContact">{{
-								t("添加联系人")
-							}}</cl-button>
+							<cl-button @tap="addContact">{{ t("添加联系人") }}</cl-button>
 						</view>
 					</cl-form-item>
 
@@ -78,7 +76,7 @@
 							<template #value="{ value }">
 								<cl-text
 									:pt="{
-										className: 'text-center w-[120rpx]'
+										className: 'text-center w-[60px]'
 									}"
 									>{{ value }} cm</cl-text
 								>
@@ -91,7 +89,7 @@
 							<template #value="{ value }">
 								<cl-text
 									:pt="{
-										className: 'text-center w-[120rpx]'
+										className: 'text-center w-[60px]'
 									}"
 									>{{ value }} kg</cl-text
 								>
@@ -141,7 +139,7 @@
 			</demo-item>
 
 			<demo-item>
-				<cl-text pre-wrap :pt="{ className: 'text-sm p-2' }">{{
+				<cl-text pre-wrap :pt="{ className: 'p-2' }">{{
 					JSON.stringify(formData, null, 4)
 				}}</cl-text>
 			</demo-item>
@@ -149,23 +147,12 @@
 
 		<cl-footer>
 			<view class="flex flex-row">
-				<cl-button
-					type="light"
-					size="large"
-					text
-					border
-					:pt="{ className: 'flex-1 !rounded-xl h-[80rpx]' }"
-					@click="reset"
-					>{{ t("重置") }}</cl-button
-				>
-				<cl-button
-					type="primary"
-					:loading="saving"
-					size="large"
-					:pt="{ className: 'flex-1 !rounded-xl h-[80rpx]' }"
-					@click="submit"
-					>{{ t("提交") }}</cl-button
-				>
+				<cl-button type="light" size="large" text border fluid @click="reset">{{
+					t("重置")
+				}}</cl-button>
+				<cl-button type="primary" :loading="saving" size="large" fluid @click="submit">{{
+					t("提交")
+				}}</cl-button>
 			</view>
 		</cl-footer>
 	</cl-page>
@@ -181,9 +168,8 @@ import {
 	type ClFormRule,
 	type ClSelectOption
 } from "@/uni_modules/cool-ui";
-import pca from "@/data/pca.json";
-import { t } from "@/locale";
-import { dayUts } from "@/cool";
+import pca from "@/.cool/data/pca.json";
+import { dayUts, t } from "@/.cool";
 
 const ui = useUi();
 const { formRef, validate, clearValidate } = useForm();

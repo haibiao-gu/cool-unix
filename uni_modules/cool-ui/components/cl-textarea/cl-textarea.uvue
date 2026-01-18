@@ -11,6 +11,7 @@
 				'cl-textarea--error': isError
 			}
 		]"
+		@tap="onTap"
 	>
 		<textarea
 			class="cl-textarea__inner"
@@ -51,8 +52,9 @@
 		/>
 
 		<cl-text
-			:pt="{ className: 'absolute right-2 bottom-2 text-xs text-surface-400' }"
 			v-if="showWordLimit"
+			:size="12"
+			:pt="{ className: 'absolute right-2 bottom-2 text-surface-400' }"
 			>{{ value.length }} / {{ maxlength }}</cl-text
 		>
 	</view>
@@ -62,8 +64,7 @@
 import { computed, nextTick, ref, watch, type PropType } from "vue";
 import type { PassThroughProps } from "../../types";
 import { useForm, useFormItem, useSize } from "../../hooks";
-import { isDark, parsePt, parseRpx } from "@/cool";
-import { t } from "@/locale";
+import { getColor, getUnit, isDark, parsePt, t } from "@/.cool";
 
 defineOptions({
 	name: "cl-textarea"
@@ -149,7 +150,7 @@ const props = defineProps({
 	// 高度
 	height: {
 		type: [Number, String],
-		default: 120
+		default: 70
 	},
 	// 是否自动增高
 	autoHeight: {
@@ -248,26 +249,26 @@ type PassThrough = {
 const pt = computed(() => parsePt<PassThrough>(props.pt));
 
 // 字号
-const { ptClassName, getSize } = useSize(() => pt.value.inner?.className ?? "");
+const { ptClassName, toScale } = useSize(() => pt.value.inner?.className ?? "");
+
+// 字号
+const fontSize = computed(() => toScale(14) + "px");
 
 // 文本框样式
 const textareaStyle = computed(() => {
 	const style = {
-		height: parseRpx(props.height)
+		height: getUnit(props.height)
 	};
 
 	// 字号
-	const fontSize = getSize(null);
-	if (fontSize != null) {
-		style["fontSize"] = fontSize;
-	}
+	style["fontSize"] = fontSize.value;
 
 	return style;
 });
 
 // 占位符样式
 const placeholderStyle = computed(() => {
-	return `font-size: 26rpx; ${props.placeholderStyle}`;
+	return `font-size: ${fontSize.value}; color: ${getColor("surface-400")}; ${props.placeholderStyle}`;
 });
 
 // 绑定值
@@ -278,6 +279,11 @@ const isFocus = ref<boolean>(props.autofocus);
 
 // 是否聚焦（输入框作用）
 const isFocusing = ref<boolean>(props.autofocus);
+
+// 点击事件
+function onTap() {
+	isFocus.value = true;
+}
 
 // 获取焦点事件
 function onFocus(e: UniTextareaFocusEvent) {
@@ -352,7 +358,7 @@ defineExpose({
 .cl-textarea {
 	@apply flex flex-row items-center bg-white;
 	@apply rounded-lg;
-	padding: 16rpx 20rpx;
+	padding: 8px 10px;
 	transition-property: border-color, background-color;
 	transition-duration: 0.2s;
 
@@ -363,7 +369,7 @@ defineExpose({
 	&__inner {
 		@apply h-full text-surface-700;
 		flex: 1;
-		font-size: 28rpx;
+		font-size: 14px;
 
 		&.is-dark {
 			@apply text-white;
@@ -372,7 +378,7 @@ defineExpose({
 
 	&__icon {
 		@apply flex items-center justify-center h-full;
-		padding-left: 20rpx;
+		padding-left: 10px;
 	}
 
 	&--border {

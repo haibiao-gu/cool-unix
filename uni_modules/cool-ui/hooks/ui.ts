@@ -1,6 +1,5 @@
-import { router } from "@/cool";
+import { router, t } from "@/.cool";
 import type { ClConfirmAction, ClConfirmOptions, ClToastOptions } from "../types";
-import { t } from "@/locale";
 
 /**
  * UiInstance 类型定义

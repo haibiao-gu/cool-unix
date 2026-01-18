@@ -38,11 +38,11 @@
 				</cl-list-item>
 
 				<cl-list-item
-					:label="t('联系客服')"
+					:label="t('联系我们')"
 					icon="customer-service-line"
 					arrow
 					hoverable
-					@tap="router.to('/pages/set/cs')"
+					@tap="refs.open('cs')"
 				>
 				</cl-list-item>
 			</cl-list>
@@ -53,15 +53,19 @@
 				</cl-list-item>
 			</cl-list>
 		</view>
+
+		<!-- 联系我们 -->
+		<contact-us :ref="refs.set('cs')"></contact-us>
 	</cl-page>
 </template>
 
 <script setup lang="ts">
 import { config } from "@/config";
-import { router, useStore } from "@/cool";
-import { $t, t } from "@/locale";
+import { router, useRefs, useStore, t, $t } from "@/.cool";
 import { useUi } from "@/uni_modules/cool-ui";
+import ContactUs from "./components/contact-us.uvue";
 
+const refs = useRefs();
 const ui = useUi();
 const { user } = useStore();
 

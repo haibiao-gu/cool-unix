@@ -58,10 +58,9 @@
 </template>
 
 <script lang="ts" setup>
-import { t } from "@/locale";
 import DemoItem from "../components/item.uvue";
 import { onMounted, onUnmounted, ref } from "vue";
-import { dayUts, isDark, parseClass } from "@/cool";
+import { dayUts, isDark, parseClass, t } from "@/.cool";
 import { useUi } from "@/uni_modules/cool-ui";
 
 const ui = useUi();

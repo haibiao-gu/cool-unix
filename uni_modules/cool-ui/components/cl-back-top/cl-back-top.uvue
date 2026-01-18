@@ -6,13 +6,13 @@
 				'is-show': visible
 			}"
 		>
-			<cl-icon name="skip-up-line" color="white" size="25px"></cl-icon>
+			<cl-icon name="skip-up-line" color="white" :size="25"></cl-icon>
 		</view>
 	</view>
 </template>
 
 <script setup lang="ts">
-import { getTabBarHeight, hasCustomTabBar, scroller } from "@/cool";
+import { getTabBarHeight, hasCustomTabBar, scroller } from "@/.cool";
 import { computed, onMounted, onUnmounted, ref, watch, type PropType } from "vue";
 import { usePage } from "../../hooks";
 import { clFooterOffset } from "../cl-footer/offset";
@@ -99,7 +99,7 @@ onUnmounted(() => {
 	width: 40px;
 	height: 40px;
 	transition-property: transform;
-	transform: translateX(160rpx);
+	transform: translateX(80px);
 
 	&.is-show {
 		transform: translateX(-20px);

@@ -15,7 +15,7 @@
 					:options="options"
 					:disabled="isDisabled"
 					:text-separator="isSeparator ? ' / ' : ' - '"
-					:height="isHeight ? 500 : 800"
+					:height="isHeight ? 250 : 400"
 				></cl-cascader>
 
 				<cl-list
@@ -45,8 +45,8 @@
 import { reactive, ref } from "vue";
 import DemoItem from "../components/item.uvue";
 import { useCascader, type ClCascaderOption } from "@/uni_modules/cool-ui";
-import { t } from "@/locale";
-import pca from "@/data/pca.json";
+import { t } from "@/.cool";
+import pca from "@/.cool/data/pca.json";
 
 type Form = {
 	cascader1: string[];

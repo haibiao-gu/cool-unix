@@ -33,9 +33,8 @@
 <script lang="ts" setup>
 import { useUi } from "@/uni_modules/cool-ui";
 import { ref } from "vue";
-import { usePager } from "@/cool";
+import { usePager, t } from "@/.cool";
 import GoodsItem from "../components/goods-item.uvue";
-import { t } from "@/locale";
 
 const ui = useUi();
 

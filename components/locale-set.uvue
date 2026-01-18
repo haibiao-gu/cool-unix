@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import { locale, setLocale, t } from "@/locale";
+import { locale, setLocale, t } from "@/.cool";
 import { useUi, type ClSelectOption } from "@/uni_modules/cool-ui";
 import { ref } from "vue";
 
@@ -52,7 +52,7 @@ const options = [
 const selectRef = ref<ClSelectComponentPublicInstance | null>(null);
 
 // 当前语言
-const active = ref(locale.value);
+const active = ref<string>(locale.value);
 
 // 打开
 function open() {

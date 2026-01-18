@@ -30,7 +30,7 @@ import {
 	parseClass,
 	parsePt,
 	uuid
-} from "@/cool";
+} from "@/.cool";
 import { computed, getCurrentInstance, onMounted, ref, watch, type PropType } from "vue";
 import type { PassThroughProps } from "../../types";
 

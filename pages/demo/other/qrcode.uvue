@@ -37,7 +37,7 @@
 					</cl-list-item>
 
 					<view class="p-2">
-						<cl-tabs v-model="mode" :height="66" :list="modeList" show-slider></cl-tabs>
+						<cl-tabs v-model="mode" :list="modeList" show-slider></cl-tabs>
 					</view>
 				</cl-list>
 			</demo-item>
@@ -49,7 +49,7 @@
 import type { ClQrcodeMode, ClTabsItem } from "@/uni_modules/cool-ui";
 import DemoItem from "../components/item.uvue";
 import { ref } from "vue";
-import { t } from "@/locale";
+import { t } from "@/.cool";
 
 const isLogo = ref(true);
 const isPdRadius = ref(true);

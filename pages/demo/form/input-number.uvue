@@ -15,7 +15,7 @@
 						:input-type="isDigit ? 'digit' : 'number'"
 						:inputable="isInput"
 						:disabled="isDisabled"
-						:size="isSize ? 60 : 50"
+						:size="isSize ? 30 : 24"
 						:pt="{
 							op: {
 								className: parseClass({
@@ -73,8 +73,7 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import DemoItem from "../components/item.uvue";
-import { parseClass } from "@/cool";
-import { t } from "@/locale";
+import { parseClass, t } from "@/.cool";
 
 const num = ref(0);
 

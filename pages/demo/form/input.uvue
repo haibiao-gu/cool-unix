@@ -126,9 +126,8 @@
 import { ref } from "vue";
 import DemoItem from "../components/item.uvue";
 import DemoTips from "../components/tips.uvue";
-import { parseClass } from "@/cool";
+import { parseClass, t } from "@/.cool";
 import { useUi } from "@/uni_modules/cool-ui";
-import { t } from "@/locale";
 
 const ui = useUi();
 

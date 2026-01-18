@@ -1,4 +1,4 @@
-import { router } from "@/cool";
+import { router } from "@/.cool";
 import { reactive } from "vue";
 
 export class ClFooterOffset {

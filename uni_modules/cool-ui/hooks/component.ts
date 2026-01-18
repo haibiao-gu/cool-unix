@@ -1,4 +1,4 @@
-import { parse } from "@/cool";
+import { parse } from "@/.cool";
 import type { ClCascaderOption, ClListViewItem, ClTreeItem } from "../types";
 
 export function useListView(data: UTSJSONObject[]) {

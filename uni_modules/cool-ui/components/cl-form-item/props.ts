@@ -1,9 +1,10 @@
 import type { ClFormLabelPosition, ClFormRule, PassThroughProps } from "../../types";
+import type { ClTextProps } from "../cl-text/props";
 
 export type ClFormItemPassThrough = {
 	className?: string;
 	inner?: PassThroughProps;
-	label?: PassThroughProps;
+	label?: ClTextProps;
 	content?: PassThroughProps;
 	error?: PassThroughProps;
 };
@@ -18,5 +19,5 @@ export type ClFormItemProps = {
 	labelWidth?: string | any;
 	showAsterisk?: boolean | any;
 	showMessage?: boolean | any;
-	required?: boolean;
+	required?: boolean | any;
 };

@@ -2,9 +2,9 @@
 	<cl-popup
 		v-model="visible"
 		:pt="{
-			className: '!rounded-[60rpx]'
+			className: '!rounded-[30px]'
 		}"
-		size="70%"
+		size="300px"
 		:show-close="false"
 		:show-header="false"
 		:mask-closable="false"
@@ -14,15 +14,18 @@
 	>
 		<view class="cl-confirm">
 			<cl-text
+				:size="17"
 				:pt="{
-					className: parseClass(['cl-confirm__title text-lg text-center font-bold mb-2'])
+					className: parseClass(['cl-confirm__title font-bold p-1'])
 				}"
 				>{{ config.title }}</cl-text
 			>
 
 			<cl-text
+				:size="15"
+				color="info"
 				:pt="{
-					className: parseClass(['cl-confirm__message text-md text-center mb-8'])
+					className: parseClass(['cl-confirm__message mb-6 p-1'])
 				}"
 				>{{ config.message }}</cl-text
 			>
@@ -35,9 +38,7 @@
 					rounded
 					border
 					type="info"
-					:pt="{
-						className: 'flex-1 h-[80rpx]'
-					}"
+					fluid
 					@tap="onAction('cancel')"
 					>{{ config.cancelText }}</cl-button
 				>
@@ -46,9 +47,7 @@
 					size="large"
 					rounded
 					:loading="loading"
-					:pt="{
-						className: 'flex-1 h-[80rpx]'
-					}"
+					fluid
 					@tap="onAction('confirm')"
 					>{{ config.confirmText }}</cl-button
 				>
@@ -60,8 +59,7 @@
 <script setup lang="ts">
 import { ref, reactive } from "vue";
 import type { ClConfirmAction, ClConfirmOptions } from "../../types";
-import { t } from "@/locale";
-import { parseClass } from "@/cool";
+import { parseClass, t } from "@/.cool";
 
 // 控制弹窗显示/隐藏
 const visible = ref(false);

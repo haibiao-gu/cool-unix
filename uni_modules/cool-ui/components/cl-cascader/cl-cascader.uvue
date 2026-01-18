@@ -27,7 +27,7 @@
 			<view
 				class="cl-select-popup__list"
 				:style="{
-					height: parseRpx(height)
+					height: getUnit(height)
 				}"
 			>
 				<swiper
@@ -50,7 +50,7 @@
 						>
 							<template #item="{ data, item }">
 								<view
-									class="flex flex-row items-center justify-between w-full px-[20rpx]"
+									class="flex flex-row items-center justify-between w-full px-[10px]"
 									:class="{
 										'bg-primary-50': onItemActive(index, data),
 										'bg-surface-800': isDark && onItemActive(index, data)
@@ -86,12 +86,12 @@ import {
 	isNull,
 	parseClass,
 	parsePt,
-	parseRpx,
-	parseToObject
-} from "@/cool";
+	parseToObject,
+	getUnit,
+	t
+} from "@/.cool";
 import type { ClSelectTriggerPassThrough } from "../cl-select-trigger/props";
 import type { ClPopupPassThrough } from "../cl-popup/props";
-import { t } from "@/locale";
 import type { ClListViewItem } from "../../types";
 
 defineOptions({
@@ -191,7 +191,7 @@ const props = defineProps({
 	 */
 	height: {
 		type: [String, Number],
-		default: 800
+		default: 400
 	}
 });
 
@@ -521,7 +521,7 @@ defineExpose({
 	&-popup {
 		&__labels {
 			@apply flex flex-row mb-3;
-			padding: 0 20rpx;
+			padding: 0 10px;
 		}
 
 		&__list {

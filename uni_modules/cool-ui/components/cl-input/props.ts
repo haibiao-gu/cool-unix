@@ -21,6 +21,7 @@ export type ClInputProps = {
 	readonly?: boolean;
 	placeholder?: string;
 	placeholderClass?: string;
+	placeholderStyle?: string;
 	border?: boolean;
 	clearable?: boolean;
 	cursorSpacing?: number;

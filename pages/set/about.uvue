@@ -2,17 +2,12 @@
 	<cl-page>
 		<view class="p-3">
 			<view class="flex flex-col items-center justify-center py-10">
-				<view class="p-3 bg-primary-500 rounded-xl">
-					<cl-image src="/static/logo.png" :height="80" :width="80"></cl-image>
+				<view class="p-4 bg-white rounded-2xl">
+					<cl-image src="/static/logo.png" :height="60" :width="60"></cl-image>
 				</view>
-				<cl-text :pt="{ className: 'mt-3 mb-1' }">{{ config.name }}</cl-text>
-				<cl-text
-					color="info"
-					:pt="{
-						className: '!text-xs'
-					}"
-					>version {{ config.version }}</cl-text
-				>
+				<cl-text :size="16" :pt="{ className: 'mt-4 mb-1 font-bold' }">{{
+					config.name
+				}}</cl-text>
 			</view>
 
 			<cl-list>
@@ -29,7 +24,7 @@
 
 <script setup lang="ts">
 import { config } from "@/config";
-import { $t, t } from "@/locale";
+import { $t, t } from "@/.cool";
 import { openWeb } from "@/uni_modules/cool-open-web";
 
 onReady(() => {

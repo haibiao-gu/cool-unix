@@ -8,7 +8,7 @@
 import { ref } from "vue";
 import type { ClConfirmAction, ClConfirmOptions, ClToastOptions } from "../../types";
 import { createUi, type UiInstance } from "../../hooks";
-import { t } from "@/locale";
+import { t } from "@/.cool";
 
 defineOptions({
 	name: "cl-page-ui"
