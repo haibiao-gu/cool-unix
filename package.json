@@ -8,7 +8,7 @@
 		"weixin-js-sdk": "^1.6.5"
 	},
 	"devDependencies": {
-		"@cool-vue/unix": "1.1.0-beta.4",
+		"@cool-vue/unix": "1.1.0-beta.6",
 		"@dcloudio/types": "^3.4.16",
 		"@types/node": "^24.0.15",
 		"@vue/tsconfig": "^0.7.0",
